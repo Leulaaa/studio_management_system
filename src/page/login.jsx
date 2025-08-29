@@ -1,5 +1,6 @@
 import './login.css'
 import img1 from './image/img1.jpg';
+import { Link } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -72,13 +73,12 @@ export function Login1() {
       </CardContent>
       <CardFooter className="flex-col gap-2 ">
        
-        <Button  className="w-[340px] x-100">
-          Login
+        <Button  to='/signup2'   className="w-[340px] x-100">
+          Login  
         </Button>
-        <h2 className="text-[13px] pb-2">Don't have an account? <a href="#"
-                >
+        <h2 className="text-[13px] pb-2">Don't have an account? <Link to ='/'> 
                   Signup Here
-                </a></h2>
+                </Link></h2>
       </CardFooter>
     </Card>
         </div>

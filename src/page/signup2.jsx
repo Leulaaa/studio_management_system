@@ -1,4 +1,5 @@
 import './signup2.css'
+import { Link } from "react-router-dom"
 import img1 from './image/img1.jpg';
 import { Button } from "@/components/ui/button"
 import {
@@ -20,6 +21,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
+
 
 export function Signup2() {
   return (
@@ -62,10 +64,10 @@ export function Signup2() {
         <Button  className="w-[340px] x-100">
           Sign Up
         </Button>
-        <h2 className="text-[13px] pb-11">Alredy have an account? <a href="#"
+        <h2 className="text-[13px] pb-11">Alredy have an account? <Link to="/login"
                 >
                   Login
-                </a></h2>
+                </Link></h2>
       </CardFooter>
     </Card>
         </div>

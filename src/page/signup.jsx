@@ -1,5 +1,6 @@
 import { useState } from "react"
 import './signup.css'
+import { Link } from "react-router-dom"
 import img1 from './image/img1.jpg';
 import { Button } from "@/components/ui/button"
 
@@ -96,7 +97,7 @@ export function Sign1() {
         <Button  className="" id="google">
           Google
         </Button>
-         <Button type="submit" className="w-full" id="facebook">
+         <Button  className="w-full" id="facebook">
           Facebook
         </Button>
           </div>
@@ -104,10 +105,10 @@ export function Sign1() {
       </CardContent>
       <CardFooter className="flex-col gap-2 ">
        
-        <Button  className="w-[340px] x-100">
+        <Button type="submit" className="w-[340px] x-100">
           Next
         </Button>
-        <h2 className="text-[13px] pb-2">Alredy have an account? <a href="./login">Login</a></h2>
+        <h2 className="text-[13px] pb-2">Alredy have an account? <Link to ='/login'>Login</Link></h2>
       </CardFooter>
     </Card>
         </div>
