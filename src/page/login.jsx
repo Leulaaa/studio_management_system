@@ -76,7 +76,7 @@ export function Login1() {
         <Button  to='/signup2'   className="w-[340px] x-100">
           Login  
         </Button>
-        <h2 className="text-[13px] pb-2">Don't have an account? <Link to ='/'> 
+        <h2 className="text-[13px] pb-2">Don't have an account? <Link to ='/signup'> 
                   Signup Here
                 </Link></h2>
       </CardFooter>
