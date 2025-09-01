@@ -15,12 +15,15 @@ const Chart = ({ type }) => {
 
   const renderLineChart = () => {
     const points = [
-      { x: 40, y: 160 },
-      { x: 120, y: 120 },
-      { x: 200, y: 85 },
-      { x: 280, y: 55 },
-      { x: 360, y: 35 },
+      { x: 40, y: 160, label: 'Jan' },
+      { x: 120, y: 120, label: 'Feb' },
+      { x: 200, y: 85, label: 'Mar' },
+      { x: 280, y: 55, label: 'Apr' },
+      { x: 360, y: 35, label: 'May' },
     ];
+
+    const pathData = points.map((p, i) => i === 0 ? `M ${p.x} ${p.y}` : `Q ${(points[i-1].x + p.x)/2} ${points[i-1].y}, ${p.x} ${p.y}`).join(' ');
+    const areaPathData = `${pathData} L ${points[points.length-1].x} 180 L ${points[0].x} 180 Z`;
 
     return (
       <div className="relative p-4 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
@@ -40,16 +43,27 @@ const Chart = ({ type }) => {
             </filter>
           </defs>
 
+          {/* Axes */}
           <line x1="40" y1="180" x2="360" y2="180" stroke="#E5E7EB" strokeWidth="1" />
           <line x1="40" y1="30" x2="40" y2="180" stroke="#E5E7EB" strokeWidth="1" />
 
-          <path
-            d="M 40 160 Q 80 140 120 120 Q 160 100 200 85 Q 240 70 280 55 Q 320 45 360 35 L 360 180 L 40 180 Z"
-            fill="url(#lineGradient)"
-          />
+          {/* Y-axis labels */}
+          {[0, 50, 100, 150, 200].map((val, idx) => (
+            <text key={idx} x="30" y={180 - val * 180 / 200} className="text-xs" textAnchor="end">{val}</text>
+          ))}
+
+          {/* X-axis labels */}
+          {points.map((p, idx) => (
+            <text key={idx} x={p.x} y="195" className="text-xs" textAnchor="middle">{p.label}</text>
+          ))}
+
+          {/* Area under line */}
+          <path d={areaPathData} fill="url(#lineGradient)" />
+
+          {/* Line */}
           <path
             className="animated-line"
-            d="M 40 160 Q 80 140 120 120 Q 160 100 200 85 Q 240 70 280 55 Q 320 45 360 35"
+            d={pathData}
             stroke="#A855F7"
             strokeWidth="3"
             fill="none"
@@ -59,6 +73,7 @@ const Chart = ({ type }) => {
             style={{ transition: 'stroke-dashoffset 2s ease-out' }}
           />
 
+          {/* Points */}
           {points.map((point, i) => (
             <circle
               key={i}
@@ -122,17 +137,18 @@ const Chart = ({ type }) => {
 
   const renderBarChart = () => {
     const bars = [
-      { x: 50, y: 120, height: 60, gradient: 'url(#barGradient1)' },
-      { x: 105, y: 110, height: 70, gradient: 'url(#barGradient2)' },
-      { x: 160, y: 100, height: 80, gradient: 'url(#barGradient3)' },
-      { x: 215, y: 80, height: 100, gradient: 'url(#barGradient4)' },
-      { x: 270, y: 60, height: 120, gradient: 'url(#barGradient5)' },
-      { x: 325, y: 40, height: 140, gradient: 'url(#barGradient6)' },
+      { x: 50, y: 120, height: 60, label: 'Jan', gradient: 'url(#barGradient1)' },
+      { x: 105, y: 110, height: 70, label: 'Feb', gradient: 'url(#barGradient2)' },
+      { x: 160, y: 100, height: 80, label: 'Mar', gradient: 'url(#barGradient3)' },
+      { x: 215, y: 80, height: 100, label: 'Apr', gradient: 'url(#barGradient4)' },
+      { x: 270, y: 60, height: 120, label: 'May', gradient: 'url(#barGradient5)' },
+      { x: 325, y: 40, height: 140, label: 'Jun', gradient: 'url(#barGradient6)' },
     ];
 
     return (
       <div className="relative p-4 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
         <svg className="w-full h-64" viewBox="0 0 400 200">
+          {/* Gradients */}
           <defs>
             {bars.map((bar, i) => (
               <linearGradient key={i} id={`barGradient${i + 1}`} x1="0%" y1="0%" x2="0%" y2="100%">
@@ -141,9 +157,22 @@ const Chart = ({ type }) => {
               </linearGradient>
             ))}
           </defs>
+
+          {/* Axes */}
           <line x1="40" y1="180" x2="360" y2="180" stroke="#E5E7EB" strokeWidth="1" />
           <line x1="40" y1="30" x2="40" y2="180" stroke="#E5E7EB" strokeWidth="1" />
 
+          {/* Y-axis labels */}
+          {[0, 50, 100, 150, 200].map((val, idx) => (
+            <text key={idx} x="30" y={180 - val * 180 / 200} className="text-xs" textAnchor="end">{val}</text>
+          ))}
+
+          {/* X-axis labels */}
+          {bars.map((bar, idx) => (
+            <text key={idx} x={bar.x + 17.5} y="195" className="text-xs" textAnchor="middle">{bar.label}</text>
+          ))}
+
+          {/* Bars */}
           {bars.map((bar, i) => (
             <rect
               key={i}

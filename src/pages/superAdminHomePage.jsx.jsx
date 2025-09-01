@@ -8,6 +8,7 @@ import {
   BarChart3, 
   Settings 
 } from 'lucide-react';
+import StatsCard from '../components/ui/StatsCard';
 
 const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
   const menuItems = [
@@ -62,38 +63,26 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
   );
 };
 
-const StatsCard = ({ title, value, details }) => {
-  return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <h3 className="text-gray-500 text-sm font-semibold uppercase tracking-wide">{title}</h3>
-      <p className="text-3xl font-bold text-gray-900 mt-2 mb-2">{value}</p>
-      {details.map((detail, index) => (
-        <div key={index} className="flex justify-between items-center text-gray-500 text-sm">
-          <span>{detail.label}</span>
-          <span>{detail.value}</span>
-        </div>
-      ))}
-    </div>
-  );
-};
-
 const Chart = ({ type }) => {
   const linePoints = [
-    { x: 40, y: 160, label: 'Jan' },
-    { x: 120, y: 120, label: 'Feb' },
-    { x: 200, y: 85, label: 'Mar' },
-    { x: 280, y: 55, label: 'Apr' },
-    { x: 360, y: 35, label: 'May' },
+    { x: 40, y: 160, label: 'Jan', value: 160 },
+    { x: 120, y: 120, label: 'Feb', value: 120 },
+    { x: 200, y: 85, label: 'Mar', value: 85 },
+    { x: 280, y: 55, label: 'Apr', value: 55 },
+    { x: 360, y: 35, label: 'May', value: 35 },
   ];
 
   const barPoints = [
-    { x: 50, y: 120, height: 60, label: 'Jan' },
-    { x: 105, y: 110, height: 70, label: 'Feb' },
-    { x: 160, y: 100, height: 80, label: 'Mar' },
-    { x: 215, y: 80, height: 100, label: 'Apr' },
-    { x: 270, y: 60, height: 120, label: 'May' },
-    { x: 325, y: 40, height: 140, label: 'Jun' },
+    { x: 50, y: 120, height: 60, label: 'Jan', value: 60 },
+    { x: 105, y: 110, height: 70, label: 'Feb', value: 70 },
+    { x: 160, y: 100, height: 80, label: 'Mar', value: 80 },
+    { x: 215, y: 80, height: 100, label: 'Apr', value: 100 },
+    { x: 270, y: 60, height: 120, label: 'May', value: 120 },
+    { x: 325, y: 40, height: 140, label: 'Jun', value: 140 },
   ];
+
+  const [hoveredPoint, setHoveredPoint] = useState(null);
+  const [hoveredBar, setHoveredBar] = useState(null);
 
   const renderLineChart = () => {
     const pathData = linePoints.map((point, index) => {
@@ -105,36 +94,133 @@ const Chart = ({ type }) => {
     const areaPathData = `${pathData} L ${linePoints[linePoints.length - 1].x} 180 L ${linePoints[0].x} 180 Z`;
 
     return (
-      <div className="relative p-4 bg-white rounded-lg shadow-lg">
+      <div className="relative p-4 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
         <svg className="w-full h-64" viewBox="0 0 400 200">
+          {/* Axes */}
           <line x1="40" y1="180" x2="360" y2="180" stroke="#E5E7EB" strokeWidth="1" />
           <line x1="40" y1="30" x2="40" y2="180" stroke="#E5E7EB" strokeWidth="1" />
+
+          {/* Y-axis labels */}
+          {[0, 50, 100, 150, 200].map((val, idx) => (
+            <text key={idx} x="30" y={180 - val * 180 / 200} className="text-xs" textAnchor="end">{val}</text>
+          ))}
+
+          {/* X-axis labels */}
+          {linePoints.map((point, idx) => (
+            <text key={idx} x={point.x} y="195" className="text-xs" textAnchor="middle">{point.label}</text>
+          ))}
+
+          <defs>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#A855F7" stopOpacity="0.4" />
+              <stop offset="50%" stopColor="#C084FC" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0.1" />
+            </linearGradient>
+          </defs>
+
+          {/* Area under line */}
           <path d={areaPathData} fill="url(#lineGradient)" />
+
+          {/* Line */}
           <path d={pathData} stroke="#A855F7" strokeWidth="3" fill="none" />
+
+          {/* Points with hover and tooltip */}
+          {linePoints.map((point, i) => (
+            <g key={i}>
+              <circle
+                cx={point.x}
+                cy={point.y}
+                r={hoveredPoint === i ? 8 : 5}
+                fill={hoveredPoint === i ? '#A855F7' : '#FFFFFF'}
+                stroke="#A855F7"
+                strokeWidth={hoveredPoint === i ? 3 : 2}
+                className="transition-all duration-300 cursor-pointer"
+                onMouseEnter={() => setHoveredPoint(i)}
+                onMouseLeave={() => setHoveredPoint(null)}
+              />
+              {hoveredPoint === i && (
+                <text x={point.x} y={point.y - 10} textAnchor="middle" className="text-xs font-bold fill-purple-700">{point.value}</text>
+              )}
+            </g>
+          ))}
         </svg>
       </div>
     );
   };
 
+  const renderBarChart = () => (
+    <div className="relative p-4 bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+      <svg className="w-full h-64" viewBox="0 0 400 200">
+        {/* Axes */}
+        <line x1="40" y1="180" x2="360" y2="180" stroke="#E5E7EB" strokeWidth="1" />
+        <line x1="40" y1="30" x2="40" y2="180" stroke="#E5E7EB" strokeWidth="1" />
+
+        {/* Y-axis labels */}
+        {[0, 50, 100, 150, 200].map((val, idx) => (
+          <text key={idx} x="30" y={180 - val * 180 / 200} className="text-xs" textAnchor="end">{val}</text>
+        ))}
+
+        {/* X-axis labels */}
+        {barPoints.map((point, idx) => (
+          <text key={idx} x={point.x + 17.5} y="195" className="text-xs" textAnchor="middle">{point.label}</text>
+        ))}
+
+        <defs>
+          {barPoints.map((_, idx) => (
+            <linearGradient key={idx} id={`barGradient${idx}`} x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#3B82F6" />
+              <stop offset="100%" stopColor="#A855F7" />
+            </linearGradient>
+          ))}
+        </defs>
+
+        {/* Bars with hover and tooltip */}
+        {barPoints.map((point, idx) => (
+          <g key={idx}>
+            <rect
+              x={point.x}
+              y={point.y}
+              width="35"
+              height={point.height}
+              fill={`url(#barGradient${idx})`}
+              rx="4"
+              className={`transition-transform duration-300 cursor-pointer ${hoveredBar === idx ? 'scale-y-110' : ''}`}
+              onMouseEnter={() => setHoveredBar(idx)}
+              onMouseLeave={() => setHoveredBar(null)}
+            />
+            {hoveredBar === idx && (
+              <text x={point.x + 17.5} y={point.y - 5} textAnchor="middle" className="text-xs font-bold fill-purple-700">{point.value}</text>
+            )}
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+
   const renderDonutChart = () => (
-    <div className="relative h-64 flex items-center justify-center bg-white rounded-lg shadow-lg">
-      <div className="w-48 h-48 relative">
+    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+      <div className="relative w-48 h-48 mx-auto">
         <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
           <circle cx="50" cy="50" r="40" fill="none" stroke="#A855F7" strokeWidth="20" strokeDasharray="125.6 251.2" />
           <circle cx="50" cy="50" r="40" fill="none" stroke="#3B82F6" strokeWidth="20" strokeDasharray="62.8 314" strokeDashoffset="-125.6" />
           <circle cx="50" cy="50" r="40" fill="none" stroke="#10B981" strokeWidth="20" strokeDasharray="62.8 314" strokeDashoffset="-188.4" />
         </svg>
       </div>
-    </div>
-  );
-
-  const renderBarChart = () => (
-    <div className="relative p-4 bg-white rounded-lg shadow-lg">
-      <svg className="w-full h-64" viewBox="0 0 400 200">
-        {barPoints.map((point, index) => (
-          <rect key={index} x={point.x} y={point.y} width="35" height={point.height} fill="#3B82F6" rx="4" />
-        ))}
-      </svg>
+      {/* Legend */}
+      <div className="flex justify-center space-x-6 mt-4 text-sm">
+        <div className="flex items-center">
+          <span className="w-3 h-3 bg-purple-500 rounded-full mr-2"></span>
+          <span>Booking Fees</span>
+        </div>
+        <div className="flex items-center">
+          <span className="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
+          <span>Subscription Fees</span>
+        </div>
+        <div className="flex items-center">
+          <span className="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+          <span>Service Fees</span>
+        </div>
+      </div>
     </div>
   );
 
