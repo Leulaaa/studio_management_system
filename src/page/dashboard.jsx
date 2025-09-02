@@ -167,7 +167,7 @@ export function Dashboard() {
     </div>
     <div id='line'>
       <h1 id='payment012'>RECENT BOOKING HISTORY</h1>
-      <Link id='add012' to="/addpayment">View All -></Link>
+      <Link id='add012' to="/dashboard2">View All -></Link>
     </div> 
     <Table className="ml-[150px] w-[970px]">
 
