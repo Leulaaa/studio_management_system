@@ -39,8 +39,8 @@
     
 }
 #nav{
-    margin-left: -600px;
-    margin-top: -200px;
+    margin-left: -100px;
+    margin-top: -30px;
     box-shadow: 0 0 8px 0.1px rgb(190, 190, 190);
     width: 200px;
     height: 170px;
@@ -49,17 +49,37 @@
 }
 /* ? */
 
-#welcome{
-    text-align: left;
-    font-size: 20px;
-    font-weight: 640;
-    padding-bottom: 15px;
-    margin-top: -199px;
-    margin-left: 70px;
+
+
+/*  */
+#dashboard01{
+    margin-top: -210px;
+    
+    
 }
-#welcome1{
-    text-align: left;
-    font-size: 14px;
-     margin-left: 70px;
-     color: rgb(39, 39, 39);
+/*  */
+#add012{
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(236, 131, 71);
+    margin-left: 630px;
+    padding: 15px;
+    padding-right: 10px;
+}
+#add012:hover{
+    
+    color: rgb(44, 171, 230);
+}
+#payment012{
+      font-size: 15px;
+    font-weight: 600;
+    color: rgb(41, 41, 41);
+    margin-left: 0px;
+    padding: 15px 10px;
+}
+#view01{
+    color: rgb(44, 171, 230);
+}
+#view01:hover{
+    color: rgb(109, 215, 230);
 }

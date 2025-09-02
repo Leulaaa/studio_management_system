@@ -1,18 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './dashboard.css';
+import './dashboard2.css';
 import { ImStack } from 'react-icons/im'
 import { RiStore2Line } from 'react-icons/ri'
 import { FiSettings } from 'react-icons/fi'
 import { FiLogOut } from 'react-icons/fi'
-import img1 from './image/img2.jpg';
-import img3 from './image/img3.png';
-import img4 from './image/img4.png';
-import img5 from './image/img5.png';
-import img6 from './image/img6.webp';
-import { SiApacherocketmq } from 'react-icons/si'
-import { HiOutlineReceiptRefund } from 'react-icons/hi'
-import { FiPackage } from 'react-icons/fi'
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 import {
   Table,
   TableBody,
@@ -73,11 +74,54 @@ const invoices = [
     total: "1,500.00 ETB",
     link:<Link id='view01' to="/addpayment">View Details -> </Link>
   },
+  {
+    bookingid: "INV004",
+    status: <div className='text-green-500'>COMPLETED</div>,
+    Date: "12/11/2025",
+    total: "1,500.00 ETB",
+    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+  },
+  {
+    bookingid: "INV005",
+    status: <div className='text-green-500'>COMPLETED</div>,
+    Date: "1/08/2025",
+    total: "1,500.00 ETB",
+    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+  },
+ 
+  {
+    bookingid: "INV004",
+    status: <div className='text-green-500'>COMPLETED</div>,
+    Date: "12/11/2025",
+    total: "1,500.00 ETB",
+    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+  },
+  {
+    bookingid: "INV005",
+    status: <div className='text-green-500'>COMPLETED</div>,
+    Date: "1/08/2025",
+    total: "1,500.00 ETB",
+    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+  },
+  {
+    bookingid: "INV006",
+    status: <div className='text-red-500'>CANCELLED</div>,
+    Date: "12/3/2025",
+    total: "500.00 ETB",
+    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+  },
+  {
+    bookingid: "INV007",
+    status:<div className='text-green-500'>COMPLETED</div>,
+    Date: "12/08/2025",
+    total: "1,500.00 ETB",
+    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+  },
 ]
 
 
 
-export function Dashboard() {
+export function Dashboard2() {
   return (
   <>
    <body className="dashboard"id='dashboard'>
@@ -85,89 +129,18 @@ export function Dashboard() {
     </body>
     <div id='dashboard'>
       <ul id='nav'> 
-        <li id='active'><Link className='h' id='h3' to="/dashboard"><ImStack /> <h2 id='h2'>Dashboard</h2></Link></li>
-        <li><Link id='h' to="/dashboard2"> <RiStore2Line  /> <h2 id='h2'>Booking History</h2></Link></li>
+        <li ><Link className='h' id='h' to="/dashboard"><ImStack /> <h2 id='h2'>Dashboard</h2></Link></li>
+        <li id='active'><Link id='h3' to="/dashboard2"> <RiStore2Line  /> <h2 id='h2'>Booking History</h2></Link></li>
         <li><Link id='h' to="/addcourse"><FiSettings /> <h2 id='h2'>Setting</h2></Link></li>
         <li><Link id='h' to="/login"><FiLogOut /><h2 id='h2'>Log-out</h2></Link></li>
       </ul>
-      <div>
-        <h1 id='welcome'>Hello, Abebe</h1>
-        <h3 id='welcome1'>From your account dashboard. you can easily check & view your <br />
-        Recent Bookings, manage your payments and edit your 
-        Password and Account Details. </h3>
-
       
-      </div>
-      <div id='box'>
-        <div id='box1'>
-          <h1 id='boxh1'>ACCOUNT INFO</h1>
-          <div id='box2'>
-            <img id='im1' src={img1} alt=""/>
-            <h2 id='boxh2'>Abebe Kebede <br /><p>Addis Ababa</p></h2>
-          </div>
-          <h2 id='boxh3'>Email:<p>abebe.kebede@gmail.com</p></h2>
-          <h2 id='boxh3'>Sec Email:<p>Abebe12345@gmail.com</p></h2>
-          <h2 id='boxh3'>Phone:<p>+251 912345678</p></h2>
-          <button id='butt'>EDIT ACCOUNT</button>
-        </div>
-        <div id='box01'>
-          <h1 id='boxh1'>PAYMENT DETAILS</h1> 
-           <h2 id='boxh4'>Abebe Kebede <br /><p>Addis Ababa</p></h2>
-           <h2 id='boxh3'>Phone Number:<p>+251 912345678</p></h2>
-          <h2 id='boxh3'>Email:<p>abebe.kebede@gmail.com</p></h2>
-          <button id='butt'>EDIT ADDRESS</button>
-          
-        </div>
-        <div id='box6'>
-          <div id='box7'>
-            <SiApacherocketmq id='icon2'/> <div id='box8' ><h1>154 <p>Total Bookings</p></h1></div>
-          </div>
-          <div id='box07'>
-            <HiOutlineReceiptRefund id='icon02'/> <div id='box8'><h1>05 <p>Pending Bookings</p></h1></div>
-          </div>
-          <div id='box017'>
-            <FiPackage id='icon012'/> <div id='box8'><h1>149 <p>Completed Bookings</p></h1></div>
-          </div>
-          
-        </div>
-        
-      </div>
       
-    </div> 
+    </div > 
+    <div id='dashboard01'>
     <div id='line'>
-      <h1 id='payment01'>PAYMENT OPTION</h1>
-      <Link id='add0' to="/addpayment">+ Add Card -></Link>
-    </div> 
-    <div>
-      <h1 id='paymenth'>Select Payment Method</h1>
-      <div id='card001'>
-        <div id='card01'>
-          <img id='im01' src={img6} alt=""/>
-          <h2 id='cardh02'>TeleBirr</h2>
-          
-        </div>
-        <div id='card01'>
-          <img id='im01' src={img5} alt=""/>
-          <h2 id='cardh02'>M-Pesa</h2>
-          
-        </div>
-      </div>
-      <div id='card001'>
-        <div id='card01'>
-          <img id='im01' src={img4} alt=""/>
-          <h2 id='cardh02'>CBE Birr</h2>
-          
-        </div>
-        <div id='card01'>
-          <img id='im01' src={img3} alt=""/>
-          <h2 id='cardh02'>E-Birr</h2>
-          
-        </div>
-      </div>
-    </div>
-    <div id='line'>
-      <h1 id='payment012'>RECENT BOOKING HISTORY</h1>
-      <Link id='add012' to="/addpayment">View All -></Link>
+      <h1 id='payment012'>ORDER HISTORY</h1>
+      
     </div> 
     <Table className="ml-[150px] w-[970px]">
 
@@ -198,7 +171,34 @@ export function Dashboard() {
           <TableCell className="text-right"></TableCell>
         </TableRow>
       </TableFooter>
+      
     </Table>
+    <Pagination id='num01' className="ml-[60px] mt-4 text-black-500">
+      <PaginationContent >
+        <PaginationItem >
+          <PaginationPrevious id='num01' href="#" />
+        </PaginationItem>
+        <PaginationItem  >
+          <PaginationLink id='num01'  href="#">1</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink  id='num01'href="#" isActive>
+            2
+          </PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationLink id='num01' href="#">3</PaginationLink>
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext id='num01' href="#" />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  
+    </div>
   </>
   )
 }
