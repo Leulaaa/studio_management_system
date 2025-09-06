@@ -1,13 +1,13 @@
+import { Link } from "react-router-dom";   // ⬅️ Moved here
+
 export default function Home() {
   return (
     <div>
-
       <section
-  className="relative h-screen w-screen left-[calc(-50vw+50%)] flex flex-col justify-center items-center text-center
-  bg-[url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0')]
-  bg-cover bg-center bg-no-repeat text-white"
->
-
+        className="relative h-screen w-screen left-[calc(-50vw+50%)] flex flex-col justify-center items-center text-center
+        bg-[url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0')]
+        bg-cover bg-center bg-no-repeat text-white"
+      >
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           One Space. Endless Creations
         </h1>
@@ -19,8 +19,6 @@ export default function Home() {
           Book a Studio
         </button>
       </section>
-
-     
 
       <section className="py-12 px-6 md:px-16">
         <h2 className="text-black text-3xl font-bold mb-6">
@@ -36,55 +34,62 @@ export default function Home() {
 
         <div className="grid md:grid-cols-4 gap-6">
           {/* Podcast Studio */}
-          <div className="relative h-48 rounded-lg overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1668536618600-754ef972b9b3?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Podcast Studio"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-              <p className="text-white font-semibold text-lg">Podcast Studio</p>
+          <Link to="/podcast-studio">
+            <div className="relative h-48 rounded-lg overflow-hidden cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1668536618600-754ef972b9b3?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Podcast Studio"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <p className="text-white font-semibold text-lg">Podcast Studio</p>
+              </div>
             </div>
-          </div>
+          </Link>
 
           {/* Photo Studio */}
-          <div className="relative h-48 rounded-lg overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1668536618600-754ef972b9b3?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Photo Studio"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-              <p className="text-white font-semibold text-lg">Photo Studio</p>
+          <Link to="/photo-studio">
+            <div className="relative h-48 rounded-lg overflow-hidden cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1668536618600-754ef972b9b3?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Photo Studio"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <p className="text-white font-semibold text-lg">Photo Studio</p>
+              </div>
             </div>
-          </div>
+          </Link>
 
           {/* Art Studio */}
-          <div className="relative h-48 rounded-lg overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1615458509633-f15b61bdacb8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Art Studio"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-              <p className="text-white font-semibold text-lg">Art Studio</p>
+          <Link to="/art-studio">
+            <div className="relative h-48 rounded-lg overflow-hidden cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1615458509633-f15b61bdacb8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Art Studio"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <p className="text-white font-semibold text-lg">Art Studio</p>
+              </div>
             </div>
-          </div>
+          </Link>
 
           {/* Music Studio */}
-          <div className="relative h-48 rounded-lg overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Music Studio"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-              <p className="text-white font-semibold text-lg">Music Studio</p>
+          <Link to="/music-studio">
+            <div className="relative h-48 rounded-lg overflow-hidden cursor-pointer">
+              <img
+                src="https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Music Studio"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <p className="text-white font-semibold text-lg">Music Studio</p>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       </section>
-
 
       
       <section className="py-12 bg-white px-6 md:px-16">
