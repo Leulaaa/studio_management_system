@@ -29,7 +29,7 @@ export function Sign1() {
   return (
     <ResizablePanelGroup 
       direction="horizontal"
-      className="min-h-[460px] max-w-md rounded-none  md:min-w-[1200px] "
+      className="mt-[30px] ml-[150px] min-h-[460px] max-w-md rounded-none  md:min-w-[1200px] "
     >
       <ResizablePanel defaultSize={39} id="group">
         
@@ -40,16 +40,16 @@ export function Sign1() {
       
       <ResizablePanel defaultSize={75}>
         <div >
-          <Card className="w-full max-w-sm rounded-none min-h-[400px] max-w-md rounded-none  md:min-w-[500px]">
+          <Card id='bgg3' className="w-full max-w-sm rounded-none min-h-[400px] max-w-md rounded-none  md:min-w-[500px]">
       <CardHeader>
-        <h2 className="text-[39px]">Create an Account</h2>
+        <h2 id="sii2" className="text-[39px]">Create an Account</h2>
       </CardHeader>
       <CardContent>
         <form id="form"> 
-          <div className="flex flex-col gap-2 border-none h-90">
+          <div className="flex flex-col gap-2 border-none h-90 ">
             <div className="grid gap-3 border-none rounded-none h-12" >
               
-              <Input id="input" className="border-none   absolute x-10 h-10 w-83" 
+              <Input id="input" className="border-none   absolute x-10 h-10 w-83 " 
                 id="fulname"
                 type="text"
                 placeholder="Full Name"
@@ -92,7 +92,7 @@ export function Sign1() {
                 required
               />
             </div>
-            <h2 id="or" >OR</h2>
+            <h2 id="sii2" >OR</h2>
            
         <Button  className="" id="google">
           Google
@@ -105,10 +105,10 @@ export function Sign1() {
       </CardContent>
       <CardFooter className="flex-col gap-2 ">
        
-        <Button type="submit" className="w-[340px] x-100">
+        <Button type="submit" className="w-[340px] x-100 text-white"id='logg3'>
           Next
         </Button>
-        <h2 className="text-[13px] pb-2">Alredy have an account? <Link to ='/login'>Login</Link></h2>
+        <h2 className="text-[13px] pb-2">Alredy have an account? <Link to ='/login' className="text-blue-500">Login</Link></h2>
       </CardFooter>
     </Card>
         </div>

@@ -4,12 +4,12 @@ body{
 }
 #group{
     margin-left: 7em;
-    
+   
     
 }
 #otp{
     color: rgb(155, 153, 155);
-    
+    text-align: center;
     
     
 }
@@ -28,16 +28,14 @@ body{
     opacity: 0.7;
     
     
-}#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
 }
-
-
-
-
+#bgg{
+    background-color: white;
+}
+#sii{
+    background-color: black;
+    cursor: pointer;
+}
 
 
 

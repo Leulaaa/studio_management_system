@@ -136,13 +136,13 @@ export function Dashboard2() {
       </ul>
       
       
-    </div > 
+     
     <div id='dashboard01'>
-    <div id='line'>
+    <div id='linee'>
       <h1 id='payment012'>ORDER HISTORY</h1>
       
     </div> 
-    <Table className="ml-[150px] w-[970px]">
+    <Table className="ml-[50px] w-[970px]">
 
       
       <TableHeader >
@@ -197,7 +197,7 @@ export function Dashboard2() {
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-  
+  </div >
     </div>
   </>
   )

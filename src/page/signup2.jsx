@@ -27,7 +27,7 @@ export function Signup2() {
   return (
     <ResizablePanelGroup 
       direction="horizontal"
-      className="min-h-[460px] max-w-md rounded-none  md:min-w-[950px] "
+      className="mt-[80px] ml-[200px] min-h-[460px] max-w-md rounded-none  md:min-w-[950px] "
     >
       <ResizablePanel defaultSize={39} id="group">
         
@@ -37,8 +37,8 @@ export function Signup2() {
       </ResizablePanel>
       
       <ResizablePanel defaultSize={75}>
-        <div >
-          <Card className="w-full max-w-sm rounded-none min-h-[400px] max-w-md rounded-none  md:min-w-[100px]"><br /><br /><br /><br />
+        <div id='' className='' >
+          <Card className="w-full max-w-sm rounded-none min-h-[400px] max-w-md rounded-none  md:min-w-[100px] " id='bgg'><br /><br /><br /><br />
       <p id='otp'>we sent OTP using your phone number</p><br />
       <CardContent>
         <form id="form"> 
@@ -61,11 +61,11 @@ export function Signup2() {
       </CardContent>
       <CardFooter className="flex-col gap-2 ">
        
-        <Button  className="w-[340px] x-100">
+        <Button id='sii' className="w-[340px] x-100 text-white ">
           Sign Up
         </Button>
-        <h2 className="text-[13px] pb-11">Alredy have an account? <Link to="/login"
-                >
+        <h2 className="text-[13px] pb-11">Alredy have an account? <Link to="/login" 
+                className='text-blue-500'>
                   Login
                 </Link></h2>
       </CardFooter>

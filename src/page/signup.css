@@ -29,13 +29,15 @@ body{
     border:black solid 1px;
     color: black;
     font-size:13px;
+    cursor: pointer;
 }
 #facebook{
     align-items: center;
     width: 235px;
     margin-left: 4.7em;
-    
-    
+    color: white;
+    background-color: black;
+    cursor: pointer;
     font-size:13px;
 }
 #img{
@@ -48,9 +50,13 @@ body{
     
     
 }
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+#bgg3{
+    background-color: white;
+}
+#logg3{
+    background-color: black;
+    cursor: pointer;
+}
+#sii3{
+    text-align: center;
 }

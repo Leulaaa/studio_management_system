@@ -26,7 +26,7 @@ export function Login1() {
   return (
     <ResizablePanelGroup 
       direction="horizontal"
-      className="min-h-[460px] max-w-md rounded-none  md:min-w-[1200px] "
+      className="mt-[30px] ml-[150px] min-h-[460px] max-w-md rounded-none  md:min-w-[1200px] "
     >
       <ResizablePanel defaultSize={39} id="group">
         
@@ -37,18 +37,18 @@ export function Login1() {
       
       <ResizablePanel defaultSize={75}>
         <div >
-          <Card className="w-full max-w-sm rounded-none min-h-[400px] max-w-md rounded-none  md:min-w-[500px]">
+          <Card id='bgg2'className="w-full max-w-sm rounded-none min-h-[400px] max-w-md rounded-none  md:min-w-[500px]">
       <CardHeader>
-        <h2 className="text-[39px]">Sign-in</h2>
+        <h2 className="text-[39px]"id='sii2'>Sign-in</h2>
       </CardHeader>
       <CardContent>
         <form id="form"> 
           <div className="flex flex-col gap-2 border-none h-90">
             
              
-             <div className="grid gap-3 border-none  h-12" >
+             <div className="grid gap-3 border-none  h-12 mb[20px]"  >
               
-              <Input className="border-none   absolute x-10 h-10 w-83"
+              <Input className="border-none   absolute x-10 h-10 w-83 "
                 id="email"
                 type="email"
                 placeholder="Email"
@@ -73,10 +73,10 @@ export function Login1() {
       </CardContent>
       <CardFooter className="flex-col gap-2 ">
        
-        <Button  to='/signup2'   className="w-[340px] x-100">
+        <Button  id='logg' className="w-[340px] x-100 text-white">
           Login  
         </Button>
-        <h2 className="text-[13px] pb-2">Don't have an account? <Link to ='/signup'> 
+        <h2 className="text-[13px] pb-2">Don't have an account? <Link to ='/signup' className='text-blue-500'> 
                   Signup Here
                 </Link></h2>
       </CardFooter>

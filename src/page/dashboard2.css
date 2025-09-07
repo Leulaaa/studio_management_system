@@ -27,7 +27,7 @@
     box-shadow: 0 0 8px 0.1px rgb(190, 190, 190);
 }
 #h2{
-    margin-left: 10px;
+    
     margin-top: -3px;
     font-size: 13px;
     font-weight: 400;
@@ -39,8 +39,8 @@
     
 }
 #nav{
-    margin-left: -100px;
-    margin-top: -30px;
+   
+  margin-left: 20px;
     box-shadow: 0 0 8px 0.1px rgb(190, 190, 190);
     width: 200px;
     height: 170px;
@@ -54,7 +54,7 @@
     font-size: 20px;
     font-weight: 640;
     padding-bottom: 15px;
-    margin-top: -20px;
+    
     margin-left: 50px;
 }
 #welcome1{
@@ -69,8 +69,8 @@
 #box{
     display: flex;
     text-align: left;
-    margin-left: -550px;
-    margin-top: 90px;
+   
+    
     
     
 }
@@ -78,7 +78,7 @@
     background-color: rgb(255, 255, 255);
     border-radius: 4px;
     width: 280px;
-    margin-left: 20px;
+    margin-left: 50px;
     padding: 20px;
     border: 0px solid rgb(221, 221, 221);
     height: 320px;
@@ -154,6 +154,7 @@
     margin-top: 20px;
     font-size: 14px;
     font-weight: 500;
+    padding: 0px 20px;
 }
 #butt:hover{
     background-color: rgb(50, 175, 248);
@@ -189,10 +190,10 @@
     border: 0px solid rgb(221, 221, 221);
     width: 350px;
     margin-bottom: 30px;
-    background-color: rgba(186, 229, 252, 0.486);
-    border-radius: 5px;
+    background-color: rgba(0, 166, 255, 0.075);
+    border-radius: 2px;
     height: 85px;
-    box-shadow: 0 0 6px 0.1px rgb(218, 224, 224);
+    
 }
 #icon2{
     font-size: 60px;
@@ -212,7 +213,7 @@
     font-size: 15px;
     font-weight: 400;
     color: #707070;
-    padding-top: 10px;
+    padding-top: 0px;
 }
 #box07{
     display: flex;
@@ -220,10 +221,10 @@
     border: 0px solid rgb(221, 221, 221);
     width: 350px;
     margin-bottom: 30px;
-    background-color: rgba(255, 207, 175, 0.486);
-    border-radius: 5px;
+    background-color: rgba(252, 235, 4, 0.226);
+    border-radius: 2px;
     height: 85px;
-    box-shadow: 0 0 6px 0.1px rgb(214, 219, 209);
+   
 }
 #icon02{
    font-size: 60px;
@@ -240,10 +241,10 @@
     border: 0px solid rgb(221, 221, 221);
     width: 350px;
     margin-bottom: 30px;
-    background-color: rgba(199, 253, 192, 0.486);
-    border-radius: 5px;
+    background-color: rgba(102, 255, 0, 0.288);
+    border-radius: 2px;
     height: 85px;
-    box-shadow: 0 0 6px 0.1px rgb(214, 219, 209);
+    
 }
 #icon012{
    font-size: 60px;
@@ -257,8 +258,17 @@
 /*  */
 #line{
     display: flex;
-    margin-left: 150px;
+    margin-left: 265px;
     margin-top: 40px;
+    border: 1px solid rgb(221, 221, 221);
+    justify-content: space-between;
+   
+
+}
+#linee{
+    display: flex;
+    margin-left: 50px;
+    
     border: 1px solid rgb(221, 221, 221);
     justify-content: space-between;
    
@@ -274,7 +284,7 @@
 #add0{
     font-size: 15px;
     font-weight: 600;
-    color: rgb(236, 131, 71);
+    color: rgb(252, 102, 16);
     margin-left: 660px;
     padding: 5px;
     padding-right: 20px;
@@ -285,7 +295,7 @@
 }
 /*  */
 #paymenth{
-    margin-left: 150px;
+    margin-left: 600px;
     margin-top: 20px;
     font-size: 20px;
     font-weight: 600;
@@ -294,7 +304,7 @@
 }
 #card001{
     display: flex;
-    margin-left: 420px;
+    margin-left: 490px;
     margin-top: 50px;
 }
 #card01{
@@ -308,12 +318,13 @@
     text-align: left;
 }
 #table123{
+    
    background-color: rgba(241, 239, 239, 0.795);
 }
 #table1234{
    
     
-    padding-left: 100px;
+    padding-left: 30px;
 }
 /*  */
 

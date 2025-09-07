@@ -91,10 +91,11 @@ export function Dashboard() {
         <li><Link id='h' to="/login"><FiLogOut /><h2 id='h2'>Log-out</h2></Link></li>
       </ul>
       <div>
+      <div>
         <h1 id='welcome'>Hello, Abebe</h1>
         <h3 id='welcome1'>From your account dashboard. you can easily check & view your <br />
         Recent Bookings, manage your payments and edit your 
-        Password and Account Details. </h3>
+        Password and Account Details. </h3><br />
 
       
       </div>
@@ -132,7 +133,7 @@ export function Dashboard() {
         </div>
         
       </div>
-      
+      </div>
     </div> 
     <div id='line'>
       <h1 id='payment01'>PAYMENT OPTION</h1>
@@ -165,11 +166,12 @@ export function Dashboard() {
         </div>
       </div>
     </div>
+    
     <div id='line'>
       <h1 id='payment012'>RECENT BOOKING HISTORY</h1>
       <Link id='add012' to="/dashboard2">View All -></Link>
     </div> 
-    <Table className="ml-[150px] w-[970px]">
+    <Table className="ml-[265px] w-[962px]">
 
       
       <TableHeader >
@@ -199,6 +201,7 @@ export function Dashboard() {
         </TableRow>
       </TableFooter>
     </Table>
+    
   </>
   )
 }
