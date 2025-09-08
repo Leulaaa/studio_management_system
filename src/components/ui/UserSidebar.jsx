@@ -7,6 +7,7 @@ const UserSidebar = ({ activeItem, setActiveItem }) => {
     { id: 'booking', label: 'Booking History', icon: Calendar },
     { id: 'settings', label: 'Setting', icon: Settings },
     { id: 'logout', label: 'Log-out', icon: LogOut },
+    
   ];
 
   return (

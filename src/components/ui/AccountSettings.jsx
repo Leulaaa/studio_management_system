@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProfileAvatar from './ProfileAvatar';
 import FormField from './FormField';
 import PasswordField from './PasswordField';
-import Button from './Button';
+import Button2 from './button2';
 import Dropdown from './Dropdown';
 
 const ethiopianRegions = [
@@ -117,7 +117,8 @@ const AccountSettings = () => {
               />
             </div>
             <div className="flex justify-end">
-              <Button>SAVE CHANGES</Button>
+              <Button2>SAVE CHANGES</Button2>
+            
             </div>
           </div>
         </div>
@@ -194,7 +195,7 @@ const AccountSettings = () => {
           />
 
           <div className="flex justify-end">
-            <Button>SAVE CHANGES</Button>
+            <Button2>SAVE CHANGES</Button2>
           </div>
         </div>
       </div>
@@ -220,7 +221,7 @@ const AccountSettings = () => {
             onChange={(e) => handlePasswordChange('confirmPassword', e.target.value)}
           />
           <div className="flex justify-end">
-            <Button>CHANGE PASSWORD</Button>
+            <Button2>CHANGE PASSWORD</Button2>
           </div>
         </div>
       </div>
