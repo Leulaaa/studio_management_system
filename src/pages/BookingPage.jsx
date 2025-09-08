@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import img5 from "../assets/Group 32.png";
 import img6 from "../assets/Download our app (1).png";
 import img7 from "../assets/Download our app.png";
-
+import Navbar from "../components/ui/navbar";
+import Footer from "../components/ui/Footer";
 export default function BookingPage() {
   const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -56,7 +57,7 @@ export default function BookingPage() {
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-white">
-      
+      <Navbar/><br /><br />
       <div className="bg-black text-white text-center py-4 mx-72  rounded-b-2xl">
         <h2 className="text-xl font-bold">Podcast Studio</h2>
         <p className="text-gray-300">Yobek Building, Addis Ababa</p>
@@ -183,25 +184,7 @@ export default function BookingPage() {
       </div>
 
   
-      <div className="bg-black text-white py-10 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <img className="w-24 mb-4" src={img5} alt="logo" />
-          <p className="text-gray-400 text-sm max-w-xs mx-auto">
-            Sagittis enim nullam pulvinar tellus sit egestas. Vestibulum sed
-            libero sed at sed nisl sodales phasellus et.
-          </p>
-        </div>
-
-        <div className="flex flex-col items-center md:items-start">
-          <p className="font-bold mb-3">Download our app</p>
-          <img className="w-36 mb-3" src={img6} alt="app store" />
-          <img className="w-36" src={img7} alt="play store" />
-        </div>
-      </div>
-
-      <div className="bg-black text-center text-gray-400 py-4 text-sm">
-        © Copyright 2025 | Studio Management System
-      </div>
+     <Footer/>
     </div>
   );
 }

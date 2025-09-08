@@ -9,7 +9,8 @@ import telebirr from "../assets/g1396.png";
 import amole from "../assets/download.png";
 import cbe from "../assets/1200x630wa 1.png";
 import ebirr from "../assets/image 17.png";
-
+import Navbar from '../components/ui/navbar';
+import Footer from '../components/ui/Footer';
 export default function Summary() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ export default function Summary() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+       <Navbar />
       {/* Back button */}
       <div className="p-4">
         <button
@@ -184,25 +186,13 @@ export default function Summary() {
         </div>
       </div>
        {/* Footer */}
-            <div className="bg-black text-white py-10 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                <img className="w-24 mb-4" src={img5} alt="logo" />
-                <p className="text-gray-400 text-sm max-w-xs mx-auto">
-                  Sagittis enim nullam pulvinar tellus sit egestas. Vestibulum sed
-                  libero sed at sed nisl sodales phasellus et.
-                </p>
-              </div>
-      
-              <div className="flex flex-col items-center md:items-start">
-                <p className="font-bold mb-3">Download our app</p>
-                <img className="w-36 mb-3" src={img6} alt="app store" />
-                <img className="w-36" src={img7} alt="play store" />
-              </div>
-            </div>
-      
-            <div className="bg-black text-center text-gray-400 py-4 text-sm">
-              © Copyright 2025 | Studio Management System
-            </div>
+            
+       
+    
+    <Footer />
+    
     </div>
+
   );
+  
 }

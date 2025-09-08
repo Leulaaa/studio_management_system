@@ -2,10 +2,15 @@ import { useState } from 'react'
 
 
 import './App.css'
+
+import Music from './pages/Musicstudio';
+import Podcaststudio from './pages/Podcaststudio';
+import Artstudio from './pages/Artstudio';
+import Dashboard3 from './pages/Dashboard3';
+import BlogPage from './pages/BlogPage';
 import BookingPage from "./pages/BookingPage";
 import SummaryPage from "./pages/SummaryPage";
-import { Dashboard2 } from './page/dashboard2'
-import { Dashboard } from './page/dashboard'
+
 import {Sign1} from './page/signup'
 import { Login1 } from './page/login'
 import { Signup2 } from './page/signup2'
@@ -20,10 +25,13 @@ function App() {
 < div className="App" > 
   <Router>
     <Routes>
+      <Route path="/dashboard" element={<Dashboard3 />} />
+      <Route path="/blog" element={<BlogPage />} />
       <Route path="/" element={<BookingPage />} />
-        <Route path="/summary" element={<SummaryPage />} />
-      <Route path='/dashboard2' element={<Dashboard2/>}/>
-      <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path="/musicstudio" element={<Music />} />
+      <Route path="/podcaststudio" element={<Podcaststudio />} />
+      <Route path="/artstudio" element={<Artstudio />} />
+       <Route path="/summary" element={<SummaryPage />} />
       <Route path='/signup' element={<Sign1/>}/>
       <Route path='/login' element={<Login1/>}/>
       <Route path='/signup2' element={<Signup2/>}/>

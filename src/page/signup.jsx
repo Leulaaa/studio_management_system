@@ -49,7 +49,7 @@ export function Sign1() {
           <div className="flex flex-col gap-2 border-none h-90 ">
             <div className="grid gap-3 border-none rounded-none h-12" >
               
-              <Input id="input" className="border-none   absolute x-10 h-10 w-83 " 
+              <Input  className="border-none   absolute x-10 h-10 w-83 " 
                 id="fulname"
                 type="text"
                 placeholder="Full Name"

@@ -1,53 +1,3 @@
-.dashboard {
-  background-color: rgb(255, 255, 255);
-}
-#dashboard{
-    display: flex;
-    
-}
-#h3{
-    color: rgb(253, 253, 253);
-   
-    display: flex;
-  padding: 5px 20px;
-  font-weight: 200 ;
-  margin-bottom: 10px;
-}
-#h{
-  display: flex;
-  padding: 5px 20px;
-  font-weight: 200 ;
-  color: rgb(39, 39, 39);
- margin-bottom: 10px;
-}
-#h:hover{
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-    
-    box-shadow: 0 0 8px 0.1px rgb(190, 190, 190);
-}
-#h2{
-    
-    margin-top: -3px;
-    font-size: 13px;
-    font-weight: 400;
-}
-#active{
-    background-color: rgb(0, 0, 0);
-    width: 200px;
-    color: blue;
-    
-}
-#nav{
-   
-  margin-left: 20px;
-    box-shadow: 0 0 8px 0.1px rgb(190, 190, 190);
-    width: 200px;
-    height: 170px;
-    padding-top: 10px;
-    
-}
-/* ? */
 
 #welcome{
     text-align: left;
@@ -55,12 +5,12 @@
     font-weight: 640;
     padding-bottom: 15px;
     
-    margin-left: 50px;
+    margin-left:0px;
 }
 #welcome1{
     text-align: left;
     font-size: 14px;
-     margin-left: 50px;
+     margin-left: 0px;
      color: rgb(39, 39, 39);
      
 }
@@ -78,7 +28,7 @@
     background-color: rgb(255, 255, 255);
     border-radius: 4px;
     width: 280px;
-    margin-left: 50px;
+    margin-left: 0px;
     padding: 20px;
     border: 0px solid rgb(221, 221, 221);
     height: 320px;
@@ -188,7 +138,7 @@
     display: flex;
     padding: 15px;
     border: 0px solid rgb(221, 221, 221);
-    width: 350px;
+    width: 300px;
     margin-bottom: 30px;
     background-color: rgba(0, 166, 255, 0.075);
     border-radius: 2px;
@@ -219,7 +169,7 @@
     display: flex;
     padding: 15px;
     border: 0px solid rgb(221, 221, 221);
-    width: 350px;
+    width: 300px;
     margin-bottom: 30px;
     background-color: rgba(252, 235, 4, 0.226);
     border-radius: 2px;
@@ -239,7 +189,7 @@
     display: flex;
     padding: 15px;
     border: 0px solid rgb(221, 221, 221);
-    width: 350px;
+    width: 300px;
     margin-bottom: 30px;
     background-color: rgba(102, 255, 0, 0.288);
     border-radius: 2px;
@@ -258,23 +208,16 @@
 /*  */
 #line{
     display: flex;
-    margin-left: 265px;
+    width: 900px;
     margin-top: 40px;
     border: 1px solid rgb(221, 221, 221);
-    justify-content: space-between;
+    
    
 
 }
-#linee{
-    display: flex;
-    margin-left: 50px;
-    
-    border: 1px solid rgb(221, 221, 221);
-    justify-content: space-between;
-   
-}
 #payment01{
     font-size: 15px;
+    
     font-weight: 600;
     color: rgb(39, 39, 39);
     margin-left: 30px;
@@ -285,8 +228,8 @@
     font-size: 15px;
     font-weight: 600;
     color: rgb(252, 102, 16);
-    margin-left: 660px;
-    padding: 5px;
+    margin-left: 600px;
+    padding: 10px;
     padding-right: 20px;
 }
 #add0:hover{
@@ -295,7 +238,7 @@
 }
 /*  */
 #paymenth{
-    margin-left: 600px;
+    text-align: center;
     margin-top: 20px;
     font-size: 20px;
     font-weight: 600;
@@ -304,7 +247,7 @@
 }
 #card001{
     display: flex;
-    margin-left: 490px;
+    margin-left: 229px;
     margin-top: 50px;
 }
 #card01{
@@ -321,9 +264,23 @@
     
    background-color: rgba(241, 239, 239, 0.795);
 }
+#tbb{
+ width: 900px;
+ 
+}
+#taa1{
+    color: rgb(231, 236, 236);
+}
+#taa2{
+    color: rgb(10, 12, 12);
+}
+#taa3{
+    color: rgba(170, 177, 177, 0);
+    background-color: rgba(49, 49, 49, 0.068);
+}
 #table1234{
    
-    
+    color: black;
     padding-left: 30px;
 }
 /*  */
@@ -333,7 +290,18 @@
     font-weight: 600;
     color: rgb(41, 41, 41);
     margin-left: 0px;
-    padding: 15px 10px;
+    padding: 10px;
+}
+#add012{
+     font-size: 15px;
+    font-weight: 600;
+    color: rgb(252, 102, 16);
+    margin-left: 600px;
+    padding: 10px;
+    padding-right: 20px;
+}
+#add012:hover{
+    color: rgb(18, 112, 253);
 }
 #view01{
     color: rgb(44, 171, 230);

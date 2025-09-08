@@ -30,63 +30,63 @@ const invoices = [
     status: <div className='text-orange-400'>IN PROGRESS</div>,
     Date: "12/08/2025",
     total: "1,500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
     bookingid: "INV002",
     status: <div className='text-green-500'>COMPLETED</div>,
     Date: "15/08/2025",
     total: "1,800.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
    bookingid: "INV003",
     status:<div className='text-red-500'>CANCELLED</div>,
     Date: "1/09/2025",
     total: "600.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
     bookingid: "INV004",
     status: <div className='text-green-500'>COMPLETED</div>,
     Date: "12/11/2025",
     total: "1,500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
     bookingid: "INV005",
     status: <div className='text-green-500'>COMPLETED</div>,
     Date: "1/08/2025",
     total: "1,500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
     bookingid: "INV006",
     status: <div className='text-red-500'>CANCELLED</div>,
     Date: "12/3/2025",
     total: "500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
     bookingid: "INV007",
     status:<div className='text-green-500'>COMPLETED</div>,
     Date: "12/08/2025",
     total: "1,500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
     bookingid: "INV004",
     status: <div className='text-green-500'>COMPLETED</div>,
     Date: "12/11/2025",
     total: "1,500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
     bookingid: "INV005",
     status: <div className='text-green-500'>COMPLETED</div>,
     Date: "1/08/2025",
     total: "1,500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
  
   {
@@ -94,28 +94,28 @@ const invoices = [
     status: <div className='text-green-500'>COMPLETED</div>,
     Date: "12/11/2025",
     total: "1,500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
     bookingid: "INV005",
     status: <div className='text-green-500'>COMPLETED</div>,
     Date: "1/08/2025",
     total: "1,500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
     bookingid: "INV006",
     status: <div className='text-red-500'>CANCELLED</div>,
     Date: "12/3/2025",
     total: "500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
   {
     bookingid: "INV007",
     status:<div className='text-green-500'>COMPLETED</div>,
     Date: "12/08/2025",
     total: "1,500.00 ETB",
-    link:<Link id='view01' to="/addpayment">View Details -> </Link>
+    link:<Link id='view01' to="/addpayment">View Details  </Link>
   },
 ]
 
@@ -124,48 +124,31 @@ const invoices = [
 export function Dashboard2() {
   return (
   <>
-   <body className="dashboard"id='dashboard'>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-    </body>
-    <div id='dashboard'>
-      <ul id='nav'> 
-        <li ><Link className='h' id='h' to="/dashboard"><ImStack /> <h2 id='h2'>Dashboard</h2></Link></li>
-        <li id='active'><Link id='h3' to="/dashboard2"> <RiStore2Line  /> <h2 id='h2'>Booking History</h2></Link></li>
-        <li><Link id='h' to="/addcourse"><FiSettings /> <h2 id='h2'>Setting</h2></Link></li>
-        <li><Link id='h' to="/login"><FiLogOut /><h2 id='h2'>Log-out</h2></Link></li>
-      </ul>
-      
-      
-     
-    <div id='dashboard01'>
-    <div id='linee'>
-      <h1 id='payment012'>ORDER HISTORY</h1>
-      
-    </div> 
-    <Table className="ml-[50px] w-[970px]">
+    
+    <Table className=" w-[840px]">
 
       
       <TableHeader >
-        <TableRow id='table123'>
-          <TableHead className=" w-[0px]">BOOKING ID</TableHead>
+        <TableRow id='taa3'>
+          <TableHead id='taa2' className=" ">BOOKING ID</TableHead>
           <TableHead className=""id='table1234'>STATUS</TableHead>
           <TableHead className=""id='table1234'>DATE</TableHead>
           <TableHead className=""id='table1234'>TOTAL</TableHead>
-          <TableHead className="text-right">ACTION</TableHead>
+          <TableHead id='taa2' className="text-right">ACTION</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody >
-        {invoices.map((invoice) => (
-          <TableRow  key={invoice.invoice}>
-            <TableCell className="font-medium ">{invoice.bookingid}</TableCell>
-            <TableCell>{invoice.status}</TableCell>
-            <TableCell >{invoice.Date}</TableCell>
-            <TableCell >{invoice.total}</TableCell>
-            <TableCell className="text-right">{invoice.link}</TableCell>
-          </TableRow>
+     <TableBody className="ml-[200px] w-[762px]"id='taa1'  >
+             {invoices.map((invoice) => (
+               <TableRow   key={invoice.invoice} >
+                 <TableCell id='taa2'  className="font-medium ">{invoice.bookingid}</TableCell>
+                 <TableCell >{invoice.status}</TableCell>
+                 <TableCell id='taa2' >{invoice.Date}</TableCell>
+                 <TableCell id='taa2'>{invoice.total}</TableCell>
+                 <TableCell className="text-right">{invoice.link}</TableCell>
+               </TableRow>
         ))}
       </TableBody>
-      <TableFooter>
+      <TableFooter id='taa1'>
         <TableRow>
           <TableCell colSpan={0}></TableCell>
           <TableCell className="text-right"></TableCell>
@@ -197,8 +180,8 @@ export function Dashboard2() {
         </PaginationItem>
       </PaginationContent>
     </Pagination>
-  </div >
-    </div>
+
+    
   </>
   )
 }
