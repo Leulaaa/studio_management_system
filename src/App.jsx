@@ -2,7 +2,8 @@ import { useState } from 'react'
 
 
 import './App.css'
-
+import Home from "./pages/Home";
+import OurStudios from "./pages/OurStudios";
 import Music from './pages/Musicstudio';
 import Podcaststudio from './pages/Podcaststudio';
 import Artstudio from './pages/Artstudio';
@@ -25,9 +26,12 @@ function App() {
 < div className="App" > 
   <Router>
     <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/our-studio" element={<OurStudios />} />
+      
       <Route path="/dashboard" element={<Dashboard3 />} />
       <Route path="/blog" element={<BlogPage />} />
-      <Route path="/" element={<BookingPage />} />
+      <Route path="/booking" element={<BookingPage />} />
       <Route path="/musicstudio" element={<Music />} />
       <Route path="/podcaststudio" element={<Podcaststudio />} />
       <Route path="/artstudio" element={<Artstudio />} />
