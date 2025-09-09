@@ -2,7 +2,7 @@ import React from 'react';
 import AppleImg from '../../assets/Apple.png';
 import GoogleImg from '../../assets/Play.png';
 import Logo from '../../assets/Logo.png';
-
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-black text-gray-400 p-8">
@@ -14,7 +14,23 @@ const Footer = () => {
             Stay connected with the latest insights, tips, and updates from the world of studio management. From lighting and equipment to workflow optimization and creative inspiration, we share everything you need to run a successful studio.
           </p>
         </div>
+          <div>
+          <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/" className="hover:text-white">Home</Link></li>
+            <li><Link to="/our-studio" className="hover:text-white">Our Studios</Link></li>
+            <li><Link to="/blog" className="hover:text-white">Blog</Link></li>
+            
+          </ul>
+        </div>
 
+    
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-4">Contact</h3>
+          <p className="text-sm">📍 Addis Ababa, Ethiopia</p>
+          <p className="text-sm">📞 +251 900 123 456</p>
+          <p className="text-sm">✉️ info@studiomanagement.com</p>
+        </div>
         {/* Right Section - App Downloads */}
         <div className="flex flex-col items-center md:items-end text-center md:text-right space-y-4">
           <h4 className="text-sm font-semibold text-white">DOWNLOAD OUR APP</h4>

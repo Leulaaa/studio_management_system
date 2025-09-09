@@ -12,7 +12,7 @@ export default function Home() {
         bg-[url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0')]
         bg-cover bg-center bg-no-repeat text-white"
       >
-        <div className="opacity-70 mt-[-197px] pb-[205px] w-[1350px] ml-[16px] "><Navbar /></div>
+        <div className="opacity-70 mt-[-267px] pb-[205px] w-[1350px] ml-[18px] "><Navbar /></div>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           One Space. Endless Creations
         </h1>
@@ -349,7 +349,7 @@ export default function Home() {
 
       {/* Newsletter */}
       <section className="py-16 flex justify-center  z-40">
-        <div className="bg-amber-950/100 w-full h-[350px] max-w-[800px]  mb-[-150px]  p-12  text-center z-40">
+        <div className="bg-amber-950/100 w-full h-[350px] max-w-[800px]  mb-[-130px]  p-12  text-center z-40">
           <h2 className="text-3xl  mb-6 text-white">
             Get more weekly info about our services
           </h2>
