@@ -12,7 +12,7 @@ export default function Home() {
         bg-[url('https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0')]
         bg-cover bg-center bg-no-repeat text-white"
       >
-        <div className="opacity-70 mt-[-267px] pb-[205px] w-[1350px] ml-[18px] "><Navbar /></div>
+        <div className="opacity-70 mt-[-197px] pb-[205px] w-[1350px] ml-[16px] "><Navbar /></div>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           One Space. Endless Creations
         </h1>
