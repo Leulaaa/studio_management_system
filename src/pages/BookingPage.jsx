@@ -1,20 +1,24 @@
-// src/pages/BookingPage.jsx
+
 import React, { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import img5 from "../assets/Group 32.png";
 import img6 from "../assets/Download our app (1).png";
 import img7 from "../assets/Download our app.png";
+import { useParams } from "react-router-dom";
+
 
 export default function BookingPage() {
+  const { studio } = useParams();
+  const studioName = studio || "Podcast Studio";
   const [date, setDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [equipments, setEquipments] = useState([
-    { id: 1, name: "Shure SM7B Microphones", count: 2, price: 200 },
-    { id: 2, name: "Rodecaster Pro Mixer", count: 1, price: 500 },
-    { id: 3, name: "Headphones", count: 2, price: 100 },
-    { id: 4, name: "DSLR Camera + Tripod", count: 1, price: 300 },
+    { id: 1, name: "Shure SM7B Microphones", count: 0, price: 200 },
+    { id: 2, name: "Rodecaster Pro Mixer", count: 0, price: 500 },
+    { id: 3, name: "Headphones", count: 0, price: 100 },
+    { id: 4, name: "DSLR Camera + Tripod", count: 0, price: 300 },
   ]);
   const [staff, setStaff] = useState({
     audio: false,
@@ -58,7 +62,7 @@ export default function BookingPage() {
     <div className="min-h-screen flex flex-col justify-between bg-white">
       
       <div className="bg-black text-white text-center py-4 mx-72  rounded-b-2xl">
-        <h2 className="text-xl font-bold">Podcast Studio</h2>
+        <h2 className="text-xl font-bold">{studioName}</h2>
         <p className="text-gray-300">Yobek Building, Addis Ababa</p>
       </div>
 
