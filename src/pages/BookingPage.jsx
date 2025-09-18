@@ -174,7 +174,7 @@ export default function BookingPage() {
             </div>
           </div>
 
-          {/* Confirm */}
+      
           <div className="text-center">
             <button
               type="submit"
@@ -186,7 +186,7 @@ export default function BookingPage() {
         </form>
       </div>
 
-      {/* Footer */}
+  
       <div className="bg-black text-white py-10 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <img className="w-24 mb-4" src={img5} alt="logo" />

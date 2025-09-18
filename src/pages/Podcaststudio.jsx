@@ -21,7 +21,7 @@ const otherStudios = [
 
 export default function Podcaststudio() {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState("equipments"); // default tab
+  const [activeTab, setActiveTab] = useState("equipments"); 
 
   const equipments = [
     "Professional-grade microphones and soundproof booths.",
@@ -56,7 +56,7 @@ export default function Podcaststudio() {
           </div>
 
           <div className="flex-1 flex flex-col justify-center gap-4">
-            {/* Tabs */}
+      
             <div className="flex gap-4 mb-4">
               <button
                 className={`px-4 py-2 rounded ${
@@ -80,21 +80,21 @@ export default function Podcaststudio() {
               </button>
             </div>
 
-            {/* Dynamic List */}
+  
             <ul className="list-disc list-inside space-y-2 text-gray-700">
               {renderList().map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
             </ul>
 
-            {/* Rate Card */}
+  
             <div className="mt-6 bg-black text-white px-4 py-2 rounded-lg text-center font-semibold">
               400 birr/hr
             </div>
           </div>
         </div>
 
-        {/* Gallery */}
+    
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
           {podcastImages.slice(1).map((img, idx) => (
             <img
@@ -107,7 +107,7 @@ export default function Podcaststudio() {
         </div>
       </section>
 
-      {/* Schedule Button */}
+    
       <div className="flex justify-center">
         <button
           onClick={() => navigate("/booking/Podcast Studio")}
@@ -117,7 +117,6 @@ export default function Podcaststudio() {
         </button>
       </div>
 
-      {/* Other Studios */}
       <section className="mt-12 max-w-6xl mx-auto p-6">
         <h2 className="text-2xl font-bold mb-6">Other Studios</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -142,7 +141,7 @@ export default function Podcaststudio() {
         </div>
       </section>
 
-      {/* Footer */}
+    
       <div className="bg-black mt-24 pt-16 px-6 md:px-11">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12 md:gap-40">
           <div className="flex flex-col items-center md:items-start text-center md:text-left">

@@ -58,7 +58,7 @@ export default function Photographystudio() {
           </div>
 
           <div className="flex-1 flex flex-col justify-center gap-4">
-            {/* Buttons for switching */}
+        
             <div className="flex gap-4 mb-4">
               <button
                 className={`px-4 py-2 rounded ${
@@ -82,21 +82,21 @@ export default function Photographystudio() {
               </button>
             </div>
 
-            {/* Dynamic list */}
+      
             <ul className="list-disc list-inside space-y-2 text-gray-700">
               {renderList().map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
             </ul>
 
-            {/* Price */}
+      
             <div className="mt-6 bg-black text-white px-4 py-2 rounded-lg text-center font-semibold">
               400 birr/hr
             </div>
           </div>
         </div>
 
-        {/* Extra Images */}
+  
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
           {photographyImages.slice(1).map((img, idx) => (
             <img
@@ -109,7 +109,7 @@ export default function Photographystudio() {
         </div>
       </section>
 
-      {/* Booking Button */}
+      
       <button
         onClick={() => navigate("/booking/Photography Studio")}
         className="mt-4 px-6 py-2 bg-black object-center ml-[500px] text-white rounded-lg hover:bg-gray-800 transition"
@@ -117,7 +117,6 @@ export default function Photographystudio() {
         Book Now
       </button>
 
-      {/* Other Studios */}
       <section className="mt-12 max-w-6xl mx-auto p-6">
         <h2 className="text-2xl font-bold mb-6">Other Studios</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -142,7 +141,7 @@ export default function Photographystudio() {
         </div>
       </section>
 
-      {/* Footer */}
+  
       <div className="bg-black mt-24 pt-16 px-6 md:px-11">
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12 md:gap-40">
           <div className="flex flex-col items-center md:items-start text-center md:text-left">

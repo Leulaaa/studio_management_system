@@ -57,7 +57,7 @@ export default function Artstudio() {
           </div>
 
           <div className="flex-1 flex flex-col justify-center gap-4">
-            {/* Buttons for switching */}
+        
             <div className="flex gap-4 mb-4">
               <button
                 className={`px-4 py-2 rounded ${
@@ -81,14 +81,14 @@ export default function Artstudio() {
               </button>
             </div>
 
-            {/* Dynamic List */}
+          
             <ul className="list-disc list-inside space-y-2 text-gray-700">
               {renderList().map((item, idx) => (
                 <li key={idx}>{item}</li>
               ))}
             </ul>
 
-            {/* Rate Card */}
+      
             <div className="mt-6 bg-black text-white px-4 py-2 rounded-lg text-center font-semibold">
               400 birr/hr
             </div>
