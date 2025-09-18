@@ -1,4 +1,4 @@
-// src/pages/Summary.jsx
+
 import React from "react";
 import { ArrowLeft } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -14,18 +14,18 @@ export default function Summary() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Get state from BookingPage
+
   const { date, startTime, endTime, equipments, selectedStaff, totalEquip } =
     location.state || {};
 
-  // Example: add staff pricing if needed
-  const staffFee = selectedStaff.length * 100; // each staff = 100 birr
-  const studioFee = 300; // fixed
+  
+  const staffFee = selectedStaff.length * 1000; 
+  const studioFee = 3000; 
   const total = (totalEquip || 0) + staffFee + studioFee;
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Back button */}
+  
       <div className="p-4">
         <button
           className="flex items-center space-x-2 text-gray-600 hover:text-black"
@@ -36,22 +36,22 @@ export default function Summary() {
         </button>
       </div>
 
-      {/* Content */}
+    
       <div className="flex-grow flex justify-center">
         <div className="w-full max-w-lg bg-white shadow-lg rounded-2xl p-6">
-          {/* Header */}
+    
           <div className="bg-black text-white text-center py-3 rounded-xl mb-6">
             <h2 className="text-lg font-semibold">Podcast Studio</h2>
             <p className="text-sm">Yobek Building, Addis Ababa</p>
           </div>
 
-          {/* Booking Details */}
+
           <h3 className="text-center font-semibold text-lg mb-4">
             Booking Details
           </h3>
 
           <div className="text-sm text-gray-700 space-y-3">
-            {/* Date & Time */}
+        
             <div>
               <p className="font-medium">Date & Time</p>
               <p>
@@ -62,7 +62,7 @@ export default function Summary() {
               </p>
             </div>
 
-            {/* Equipments */}
+      
             <div>
               <p className="font-medium">Selected Equipment</p>
               {equipments && equipments.length > 0 ? (
@@ -81,8 +81,6 @@ export default function Summary() {
                 <p>No equipment selected</p>
               )}
             </div>
-
-            {/* Staff */}
             <div>
               <p className="font-medium">Selected Staff</p>
               {selectedStaff && selectedStaff.length > 0 ? (
@@ -100,7 +98,7 @@ export default function Summary() {
               )}
             </div>
 
-            {/* Fees */}
+      
             <div className="border-t pt-3 space-y-1">
               <div className="flex justify-between">
                 <span>Equipment Fee</span>
@@ -121,7 +119,6 @@ export default function Summary() {
             </div>
           </div>
 
-          {/* Payment Method */}
           <div className="mt-6">
             <h4 className="text-center font-medium mb-3">
               Select Payment Method
@@ -165,7 +162,7 @@ export default function Summary() {
             </div>
           </div>
 
-          {/* Phone Number */}
+          
           <div className="mt-6">
             <label className="block mb-2 text-sm font-medium text-center">
               Phone Number
@@ -177,13 +174,12 @@ export default function Summary() {
             />
           </div>
 
-          {/* Pay Button */}
+
           <button className="mt-6 w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800">
             PAY
           </button>
         </div>
       </div>
-       {/* Footer */}
             <div className="bg-black text-white py-10 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between gap-8">
               <div className="flex flex-col items-center md:items-start text-center md:text-left">
                 <img className="w-24 mb-4" src={img5} alt="logo" />
