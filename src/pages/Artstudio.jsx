@@ -7,7 +7,7 @@ import img4 from "../assets/Rectangle 2115 (3).png";
 import img5 from "../assets/Group 32.png";
 import img6 from "../assets/Download our app (1).png";
 import img7 from "../assets/Download our app.png";
-import Navbar from "../components/ui/navbar";
+import Navbar from "../components/ui/Navbar";
 import Footer from "../components/ui/Footer";
 import musicImg from "../assets/Rectangle 30.png";
 import podcastImg from "../assets/Rectangle 2115 (1).png";
