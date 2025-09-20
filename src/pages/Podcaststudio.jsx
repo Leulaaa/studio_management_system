@@ -4,14 +4,12 @@ import img1 from "../assets/Rectangle 2112 (3).png";
 import img2 from "../assets/Rectangle 2113 (3).png";
 import img3 from "../assets/Rectangle 2114 (2).png";
 import img4 from "../assets/Rectangle 2115 (2).png";
-import img5 from "../assets/Group 32.png";
-import img6 from "../assets/Download our app (1).png";
-import img7 from "../assets/Download our app.png";
-import Navbar from "../components/ui/navbar"; 
+import Navbar from "../components/ui/navbar";
 import Footer from "../components/ui/Footer";
 import musicImg from "../assets/Rectangle 2112 (1).png";
 import podcastImg from "../assets/Rectangle 2115 (1).png";
 import photographyStudioImg from "../assets/Rectangle 2112 (1).png";
+
 const photographyImages = [img1, img2, img3, img4];
 const otherStudios = [
   { name: "Art Studio", image: musicImg },
@@ -19,30 +17,33 @@ const otherStudios = [
   { name: "Photography Studio", image: photographyStudioImg },
 ];
 
-
-
 export default function Podcaststudio() {
   return (
     <div className="bg-white">
-      <Navbar/>
+      <Navbar />
+
       <section className="max-w-6xl mx-auto p-6">
-        <h1 className="text-3xl font-bold mb-6">Podcast Studio</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-6">Podcast Studio</h1>
+
         <div className="flex flex-col md:flex-row gap-6">
           <div className="flex-1">
             <img
               src={photographyImages[0]}
               alt="Photography Studio"
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg w-full object-cover"
             />
           </div>
           <div className="flex-1 flex flex-col justify-center gap-4">
-            <ul className="list-disc list-inside space-y-2 text-gray-700">
+            <ul className="list-disc list-inside space-y-2 text-gray-700 text-base md:text-lg">
               <li>Adjustable lighting rigs and studio flashes.</li>
               <li>Variety of backdrops, props, and styling equipment.</li>
-              <li>Ideal for portraits, products, campaigns, and fashion shoots.</li>
-              <li>Assistance from in-house photographers and stylists if requested.</li>
+              <li>
+                Ideal for portraits, products, campaigns, and fashion shoots.
+              </li>
+              <li>
+                Assistance from in-house photographers and stylists if requested.
+              </li>
             </ul>
-           
           </div>
         </div>
 
@@ -52,18 +53,20 @@ export default function Podcaststudio() {
               key={idx}
               src={img}
               alt={`Photography ${idx}`}
-              className="rounded-lg shadow-lg w-full h-60 object-cover"
+              className="rounded-lg shadow-lg w-full h-56 md:h-60 object-cover"
             />
           ))}
         </div>
-      </section>
-       <button className="mt-4 px-6 py-2 bg-black object-center ml-[500px] text-white rounded-lg hover:bg-gray-800 transition">
-              Schedule Session
-            </button>
 
-      {/* Other Studios */}
+        <div className="flex justify-center mt-6">
+          <button className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition">
+            Schedule Session
+          </button>
+        </div>
+      </section>
+
       <section className="mt-12 max-w-6xl mx-auto p-6">
-        <h2 className="text-2xl font-bold mb-6">Other Studios</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-6">Other Studios</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {otherStudios.map((studio, idx) => (
             <div
@@ -73,7 +76,7 @@ export default function Podcaststudio() {
               <img
                 src={studio.image}
                 alt={studio.name}
-                className="w-full h-60 object-cover"
+                className="w-full h-56 md:h-60 object-cover"
               />
               <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 hover:opacity-100 transition">
                 <span className="text-white text-lg font-semibold">
@@ -83,12 +86,9 @@ export default function Podcaststudio() {
             </div>
           ))}
         </div>
-      </section><br /><br />
-     
+      </section>
 
-{/* Footer */}
-<Footer/>
-
+      <Footer />
     </div>
   );
 }

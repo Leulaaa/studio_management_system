@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/ui/Navbar';
+import Navbar from '../components/ui/navbar';
 import Footer from '../components/ui/Footer';
 import BlogCard from '../components/ui/BlogCard';
 import BImg1 from '../assets/BImg1.png';
@@ -18,8 +18,7 @@ const BlogPage = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      <main className="container mx-auto p-4 md:p-8">
-        {/* Hero Section */}
+      <main className="container mx-auto p-4 md:p-8 pt-24">
         <section className="relative flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
             <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
@@ -38,7 +37,6 @@ const BlogPage = () => {
           </div>
         </section>
 
-        {/* Featured Blog Post - Full Width */}
         <section className="mb-12">
           <BlogCard
             title="Studio Lighting 101: Why It Changes Everything"
@@ -46,11 +44,10 @@ const BlogPage = () => {
             excerpt="Discover the fundamental principles of studio lighting and how proper illumination can transform your creative projects. From key lighting techniques to advanced setups, learn how professionals create stunning visual narratives through strategic light placement."
             imageUrl={BImg2}
             size="full"
-            onReadMore={() => navigate('/photography-studio')}
+            onReadMore={() => navigate('/photographystudio')}
           />
         </section>
 
-        {/* Three Column Grid */}
         <section className="mb-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
             <BlogCard
@@ -60,7 +57,7 @@ const BlogPage = () => {
               imageUrl={BImg3}
               layout="vertical"
               size="normal"
-              onReadMore={() => navigate('/art-creative-studio')}
+              onReadMore={() => navigate('/artstudio')}
             />
             <BlogCard
               title="Photography Studio Setup"
@@ -69,7 +66,7 @@ const BlogPage = () => {
               imageUrl={BImg4}
               layout="vertical"
               size="normal"
-              onReadMore={() => navigate('/photography-studio')}
+              onReadMore={() => navigate('/photographystudio')}
             />
             <BlogCard
               title="Podcast Production Studio"
@@ -78,12 +75,11 @@ const BlogPage = () => {
               imageUrl={BImg5}
               layout="vertical"
               size="normal"
-              onReadMore={() => navigate('/podcast-studio')}
+              onReadMore={() => navigate('/podcaststudio')}
             />
           </div>
         </section>
 
-        {/* Second Featured Post - Full Width */}
         <section className="mb-12">
           <BlogCard
             title="Shooting Your First Short Film"
@@ -91,13 +87,12 @@ const BlogPage = () => {
             excerpt="A comprehensive guide to planning, shooting, and post-production for your debut short film. Learn from industry professionals about common pitfalls to avoid and essential techniques that will elevate your storytelling."
             imageUrl={BImg6}
             size="full"
-            onReadMore={() => navigate('/photography-studio')}
+            onReadMore={() => navigate('/photographystudio')}
           />
         </section>
 
-        {/* Final Card with Custom Background - Full Width */}
         <section className="mb-12">
-          <div style={{ backgroundColor: '#f7fafc' }} className="rounded-lg overflow-hidden shadow-lg w-full">
+          <div className="rounded-lg overflow-hidden shadow-lg w-full bg-gray-50">
             <div className="flex flex-col md:flex-row">
               <div className="md:w-1/2 p-8 flex flex-col justify-center">
                 <h2 className="text-2xl font-bold mb-3 text-gray-900">
@@ -110,7 +105,7 @@ const BlogPage = () => {
                   <span className="text-gray-600">May 8th 2023</span>
                   <button
                     className="text-blue-500 hover:text-blue-600 hover:underline transition-colors"
-                    onClick={() => navigate('/music-studio')}
+                    onClick={() => navigate('/musicstudio')}
                   >
                     Read more
                   </button>

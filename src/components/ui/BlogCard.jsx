@@ -1,12 +1,11 @@
 import React from 'react';
 
-const BlogCard = ({ title, date, excerpt, imageUrl, dark = false, layout = 'horizontal', size = 'normal' }) => {
+const BlogCard = ({ title, date, excerpt, imageUrl, dark = false, layout = 'horizontal', size = 'normal', onReadMore }) => {
   const bgColor = dark ? 'bg-black' : 'bg-white';
   const titleColor = dark ? 'text-white' : 'text-gray-900';
   const textColor = dark ? 'text-gray-300' : 'text-gray-600';
   const hoverEffect = dark ? 'hover:bg-gray-900' : 'hover:bg-gray-50';
 
-  // Size variations
   const sizeClasses = {
     small: 'max-w-sm',
     normal: 'max-w-md',
@@ -29,9 +28,13 @@ const BlogCard = ({ title, date, excerpt, imageUrl, dark = false, layout = 'hori
           <p className={`text-sm mb-4 ${textColor} line-clamp-3`}>{excerpt}</p>
           <div className="flex justify-between items-center text-xs font-semibold">
             <span className={textColor}>{date}</span>
-            <a href="#" className="text-blue-500 hover:text-blue-600 hover:underline transition-colors">
+            <button
+              type="button"
+              onClick={onReadMore}
+              className="text-blue-500 hover:text-blue-600 hover:underline transition-colors"
+            >
               Read more
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -45,9 +48,13 @@ const BlogCard = ({ title, date, excerpt, imageUrl, dark = false, layout = 'hori
         <p className={`text-sm mb-6 ${textColor} leading-relaxed`}>{excerpt}</p>
         <div className="flex justify-between items-center text-xs font-semibold">
           <span className={textColor}>{date}</span>
-          <a href="#" className="text-blue-500 hover:text-blue-600 hover:underline transition-colors">
+          <button
+            type="button"
+            onClick={onReadMore}
+            className="text-blue-500 hover:text-blue-600 hover:underline transition-colors"
+          >
             Read more
-          </a>
+          </button>
         </div>
       </div>
       <div className="md:w-1/2">
