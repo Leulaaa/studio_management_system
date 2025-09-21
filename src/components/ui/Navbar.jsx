@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../../assets/Logo.png";
 import { useNavigate } from "react-router-dom";
 import { ChevronsUpDown } from "lucide-react";
@@ -28,11 +28,22 @@ const Navbar = () => {
   const [hoveredButton, setHoveredButton] = useState(null);
   const [open, setOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = localStorage.getItem("authToken");
+    setIsLoggedIn(!!token);
+  }, []);
+
   return (
-    <nav className="bg-black text-white py-2 px-4 fixed w-full top-0 z-50">
+    <nav
+      className="text-white py-2 px-4 fixed w-full top-0 z-50 transition-colors"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }} // Black with opacity
+    >
       <div className="container mx-auto flex justify-between items-center">
+        {/* Logo */}
         <div className="flex items-center mr-6">
           <img
             src={Logo}
@@ -42,19 +53,29 @@ const Navbar = () => {
           />
         </div>
 
+        {/* Desktop Links */}
         <ul className="hidden md:flex space-x-8 text-sm font-semibold">
           <li>
-            <button onClick={() => navigate("/")} className="hover:text-blue-400 transition-colors">
+            <button
+              onClick={() => navigate("/")}
+              className="hover:text-blue-400 transition-colors"
+            >
               HOME
             </button>
           </li>
           <li>
-            <button onClick={() => navigate("/our-studio")} className="hover:text-blue-400 transition-colors">
+            <button
+              onClick={() => navigate("/our-studio")}
+              className="hover:text-blue-400 transition-colors"
+            >
               OUR STUDIOS
             </button>
           </li>
           <li>
-            <button onClick={() => navigate("/blog")} className="hover:text-blue-400 transition-colors">
+            <button
+              onClick={() => navigate("/blog")}
+              className="hover:text-blue-400 transition-colors"
+            >
               BLOG
             </button>
           </li>
@@ -72,7 +93,10 @@ const Navbar = () => {
               </PopoverTrigger>
               <PopoverContent className="w-[200px] p-0 ml-[340px] bg-white mt-[-40px] border-none">
                 <Command>
-                  <CommandInput placeholder="Search Categories..." className="h-9" />
+                  <CommandInput
+                    placeholder="Search Categories..."
+                    className="h-9"
+                  />
                   <CommandList>
                     <CommandEmpty>No Category found.</CommandEmpty>
                     <CommandGroup>
@@ -99,33 +123,46 @@ const Navbar = () => {
           </li>
         </ul>
 
+        {/* Auth / Dashboard buttons */}
         <div className="flex items-center space-x-4">
-          <button
-            onMouseEnter={() => setHoveredButton("login")}
-            onMouseLeave={() => setHoveredButton(null)}
-            className={`px-5 py-1.5 border border-white rounded-full text-sm font-semibold transition-all duration-300 ${
-              hoveredButton === "login"
-                ? "bg-white text-black"
-                : hoveredButton === "signup"
-                ? "bg-black text-white"
-                : "bg-white text-black"
-            }`}
-          >
-            LOGIN
-          </button>
+          {isLoggedIn ? (
+            <button
+              onClick={() => navigate("/dashboard")}
+              className="px-5 py-1.5 border border-white rounded-full text-sm font-semibold bg-white text-black hover:bg-gray-200 transition"
+            >
+              DASHBOARD
+            </button>
+          ) : (
+            <>
+              <button
+                onMouseEnter={() => setHoveredButton("login")}
+                onMouseLeave={() => setHoveredButton(null)}
+                onClick={() => navigate("/login")}
+                className={`px-5 py-1.5 border border-white rounded-full text-sm font-semibold transition-all duration-300 ${
+                  hoveredButton === "login"
+                    ? "bg-white text-black"
+                    : "bg-white text-black"
+                }`}
+              >
+                LOGIN
+              </button>
 
-          <button
-            onMouseEnter={() => setHoveredButton("signup")}
-            onMouseLeave={() => setHoveredButton(null)}
-            className={`px-5 py-1.5 border border-white rounded-full text-sm font-semibold transition-all duration-300 ${
-              hoveredButton === "signup"
-                ? "bg-white text-black"
-                : "bg-black text-white"
-            }`}
-          >
-            SIGN UP
-          </button>
+              <button
+                onMouseEnter={() => setHoveredButton("signup")}
+                onMouseLeave={() => setHoveredButton(null)}
+                onClick={() => navigate("/signup")}
+                className={`px-5 py-1.5 border border-white rounded-full text-sm font-semibold transition-all duration-300 ${
+                  hoveredButton === "signup"
+                    ? "bg-white text-black"
+                    : "bg-black text-white"
+                }`}
+              >
+                SIGN UP
+              </button>
+            </>
+          )}
 
+          {/* Mobile toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden focus:outline-none"
@@ -139,31 +176,49 @@ const Navbar = () => {
               strokeWidth={2}
             >
               {menuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden mt-3 bg-white rounded-lg shadow-lg py-2">
           <button
-            onClick={() => { navigate("/"); setMenuOpen(false); }}
+            onClick={() => {
+              navigate("/");
+              setMenuOpen(false);
+            }}
             className="block w-full text-left px-4 py-2 text-black hover:bg-black hover:text-white transition"
           >
             HOME
           </button>
           <button
-            onClick={() => { navigate("/our-studio"); setMenuOpen(false); }}
+            onClick={() => {
+              navigate("/our-studio");
+              setMenuOpen(false);
+            }}
             className="block w-full text-left px-4 py-2 text-black hover:bg-black hover:text-white transition"
           >
             OUR STUDIOS
           </button>
           <button
-            onClick={() => { navigate("/blog"); setMenuOpen(false); }}
+            onClick={() => {
+              navigate("/blog");
+              setMenuOpen(false);
+            }}
             className="block w-full text-left px-4 py-2 text-black hover:bg-black hover:text-white transition"
           >
             BLOG
@@ -171,12 +226,47 @@ const Navbar = () => {
           {Categories.map((c) => (
             <button
               key={c.value}
-              onClick={() => { navigate(c.href); setMenuOpen(false); }}
+              onClick={() => {
+                navigate(c.href);
+                setMenuOpen(false);
+              }}
               className="block w-full text-left px-4 py-2 text-black hover:bg-black hover:text-white transition"
             >
               {c.label}
             </button>
           ))}
+          {isLoggedIn ? (
+            <button
+              onClick={() => {
+                navigate("/dashboard");
+                setMenuOpen(false);
+              }}
+              className="block w-full text-left px-4 py-2 text-black hover:bg-black hover:text-white transition"
+            >
+              DASHBOARD
+            </button>
+          ) : (
+            <>
+              <button
+                onClick={() => {
+                  navigate("/login");
+                  setMenuOpen(false);
+                }}
+                className="block w-full text-left px-4 py-2 text-black hover:bg-black hover:text-white transition"
+              >
+                LOGIN
+              </button>
+              <button
+                onClick={() => {
+                  navigate("/signup");
+                  setMenuOpen(false);
+                }}
+                className="block w-full text-left px-4 py-2 text-black hover:bg-black hover:text-white transition"
+              >
+                SIGN UP
+              </button>
+            </>
+          )}
         </div>
       )}
     </nav>

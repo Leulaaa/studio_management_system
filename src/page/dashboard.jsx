@@ -87,7 +87,7 @@ export function Dashboard() {
       
       <div>
       <div>
-        <h1 id='welcome'>Hello, Abebe</h1>
+        <h1 id='welcome'className='mt-5'>Hello, Abebe</h1>
         <h3 id='welcome1'>From your account dashboard. you can easily check & view your <br />
         Recent Bookings, manage your payments and edit your 
         Password and Account Details. </h3><br />

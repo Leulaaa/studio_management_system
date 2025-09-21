@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const BlogCard = ({ title, date, excerpt, imageUrl, dark = false, layout = 'horizontal', size = 'normal', onReadMore }) => {
+const BlogCard = ({ title, date, excerpt, fullContent, imageUrl, dark = false, layout = 'horizontal', size = 'normal' }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const bgColor = dark ? 'bg-black' : 'bg-white';
   const titleColor = dark ? 'text-white' : 'text-gray-900';
   const textColor = dark ? 'text-gray-300' : 'text-gray-600';
@@ -11,6 +13,10 @@ const BlogCard = ({ title, date, excerpt, imageUrl, dark = false, layout = 'hori
     normal: 'max-w-md',
     large: 'max-w-lg'
   };
+
+  const content = isExpanded ? fullContent : excerpt;
+  const buttonText = isExpanded ? 'Show less' : 'Read more';
+  const textClampClass = isExpanded ? '' : 'line-clamp-2';
 
   if (layout === 'vertical') {
     return (
@@ -24,16 +30,18 @@ const BlogCard = ({ title, date, excerpt, imageUrl, dark = false, layout = 'hori
           />
         </div>
         <div className="p-6">
-          <h3 className={`text-lg font-bold mb-2 ${titleColor} line-clamp-2`}>{title}</h3>
-          <p className={`text-sm mb-4 ${textColor} line-clamp-3`}>{excerpt}</p>
+          <h3 className={`text-lg font-bold mb-2 ${titleColor}`}>{title}</h3>
+          <p className={`text-sm mb-4 ${textColor} leading-relaxed ${textClampClass}`}>
+            {content}
+          </p>
           <div className="flex justify-between items-center text-xs font-semibold">
             <span className={textColor}>{date}</span>
             <button
               type="button"
-              onClick={onReadMore}
+              onClick={() => setIsExpanded(!isExpanded)}
               className="text-blue-500 hover:text-blue-600 hover:underline transition-colors"
             >
-              Read more
+              {buttonText}
             </button>
           </div>
         </div>
@@ -45,15 +53,15 @@ const BlogCard = ({ title, date, excerpt, imageUrl, dark = false, layout = 'hori
     <div className={`flex flex-col md:flex-row rounded-lg overflow-hidden shadow-lg ${bgColor} ${hoverEffect} transition-all duration-300 ${sizeClasses[size]} w-full`}>
       <div className="md:w-1/2 p-8 flex flex-col justify-center">
         <h2 className={`text-2xl font-bold mb-3 ${titleColor}`}>{title}</h2>
-        <p className={`text-sm mb-6 ${textColor} leading-relaxed`}>{excerpt}</p>
+        <p className={`text-sm mb-6 ${textColor} leading-relaxed ${textClampClass}`}>{content}</p>
         <div className="flex justify-between items-center text-xs font-semibold">
           <span className={textColor}>{date}</span>
           <button
             type="button"
-            onClick={onReadMore}
+            onClick={() => setIsExpanded(!isExpanded)}
             className="text-blue-500 hover:text-blue-600 hover:underline transition-colors"
           >
-            Read more
+            {buttonText}
           </button>
         </div>
       </div>
