@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import './App.css'
 import Home from "./pages/Home";
+
 import OurStudios from "./pages/OurStudios";
 import Music from './pages/Musicstudio';
 import Podcaststudio from './pages/Podcaststudio';
@@ -11,7 +12,7 @@ import Dashboard3 from './pages/Dashboard3';
 import BlogPage from './pages/BlogPage';
 import BookingPage from "./pages/BookingPage";
 import SummaryPage from "./pages/SummaryPage";
-
+import Photographystudio from './pages/Photographystudio';
 import {Sign1} from './page/signup'
 import { Login1 } from './page/login'
 import { Signup2 } from './page/signup2'
@@ -28,10 +29,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/our-studio" element={<OurStudios />} />
-      
+      <Route path="/photographystudio" element={<Photographystudio />} />
       <Route path="/dashboard" element={<Dashboard3 />} />
       <Route path="/blog" element={<BlogPage />} />
-      <Route path="/booking" element={<BookingPage />} />
+      <Route path="/booking/:studio" element={<BookingPage />} />
       <Route path="/musicstudio" element={<Music />} />
       <Route path="/podcaststudio" element={<Podcaststudio />} />
       <Route path="/artstudio" element={<Artstudio />} />

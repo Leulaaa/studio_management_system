@@ -1,154 +1,170 @@
-import React, { useState } from 'react';
-import Logo from '../../assets/Logo.png';
-import { Link } from 'react-router-dom';
-import { ChevronsUpDown } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Logo from "../../assets/Logo-removebg-preview.png";
+import { HiOutlineMenuAlt3, HiOutlineX } from "react-icons/hi";
 
-const Categories = [
-  
-  {
-    value: "music studio",
-    label: "Music Studio",
-    href: "/musicstudio",
-  },
-  {
-    value: "podcast studio",
-    label: "Podcast Studio",
-    href: "/podcaststudio",
-  },
-  {
-    value: "art studio",
-    label: "Art Studio",
-    href: "/artstudio",
-  },
-  {
-    value: "photography studio",
-    label: "Photography Studio",
-    href: "/photostudio",
-  },
-  
-]
 const Navbar = () => {
-  const [hoveredButton, setHoveredButton] = useState(null); 
-  const [open, setOpen] = React.useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+
+  const logoutHandler = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    navigate("/", { replace: true }); // prevent back navigation
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMenuAndNavigate = (path) => {
+    navigate(path);
+    setMobileMenuOpen(false);
+  };
+
   return (
-    <>
-    
-    <nav className="bg-black text-white py-2 px-4"> 
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-black text-white py-2 px-4 fixed w-full top-0 z-500 shadow-md z-40">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center mr-6"> 
-          <img src={Logo} alt="Logo" className="h-12 w-auto" /> 
+        <img
+          src={Logo}
+          alt="Logo"
+          className="h-12 w-auto cursor-pointer"
+          onClick={() => navigate("/")}
+        />
+
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex space-x-8 text-sm font-semibold">
+          <li>
+            <button onClick={() => navigate("/")} className="hover:text-blue-400 transition-colors">
+              HOME
+            </button>
+          </li>
+          <li>
+            <button onClick={() => navigate("/our-studio")} className="hover:text-blue-400 transition-colors">
+              OUR STUDIOS
+            </button>
+          </li>
+          <li>
+            <button onClick={() => navigate("/blog")} className="hover:text-blue-400 transition-colors">
+              BLOG
+            </button>
+          </li>
+        </ul>
+
+        {/* Desktop Buttons */}
+        <div className="hidden md:flex items-center space-x-4">
+          {!isLoggedIn ? (
+            <>
+              <button
+                onClick={() => navigate("/login")}
+                className="px-5 py-1.5 border border-white rounded-full text-sm font-semibold bg-white text-black hover:bg-black hover:text-white"
+              >
+                LOGIN
+              </button>
+              <button
+                onClick={() => navigate("/signup")}
+                className="px-5 py-1.5 border border-white rounded-full text-sm font-semibold bg-black text-white hover:bg-white hover:text-black"
+              >
+                SIGN UP
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => navigate("/dashboard")}
+                className="px-5 py-1.5 border border-white rounded-full text-sm font-semibold bg-white text-black hover:bg-black hover:text-white"
+              >
+                DASHBOARD
+              </button>
+              <button
+                onClick={logoutHandler}
+                className="px-5 py-1.5 border border-white rounded-full text-sm font-semibold bg-black text-white hover:bg-red-500"
+              >
+                LOGOUT
+              </button>
+            </>
+          )}
         </div>
 
-        {/* Navigation Links */}
-       <ul className="hidden md:flex space-x-8 text-sm font-semibold"> 
-                 <li>
-                   <Link to='/' className="hover:text-blue-400 transition-colors">
-                     HOME
-                   </Link>
-                 </li>
-                 <li>
-                   <Link to='/our-studio' className="hover:text-blue-400 transition-colors">
-                     OUR STUDIOS
-                   </Link>
-                 </li>
-                 <li>
-                   <Link to='/blog' className="hover:text-blue-400 transition-colors">
-                    BLOG
-                   </Link>
-                 </li>
-                 <li>
-                   <Popover open={open} onOpenChange={setOpen} className="hover:text-blue-400 transition-colors">
-      <PopoverTrigger asChild className="hover:text-blue-400 transition-colors">
-        <Button 
-          
-          
-          role="combobox"
-          aria-expanded={open}
-          className="w-[130px] ml-[-15px] mt-[-13px]"
-        >
-          CATEGORIES
-          <ChevronsUpDown className="opacity-90 h-1 w-4 " />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0 ml-[340px] bg-white mt-[-40px] border-none">
-        <Command>
-          <CommandInput placeholder="Search Categories..." className="h-9" />
-          <CommandList>
-            <CommandEmpty>No Category found.</CommandEmpty>
-            <CommandGroup>
-              {Categories.map((Category) => (
-                <CommandItem
-                  key={Category.value}
-                  value={Category.label}
-                  onSelect={() => setOpen(false)}
-                  className="p-0"
-                >
-                  <Link
-                    to={Category.href}
-                    className="w-full px-4 py-2 block text-sm hover:bg-accent hover:text-accent-foreground"
-                  >
-                    {Category.label}
-                  </Link>
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
-
-                 </li>
-               </ul>
-
-        {/* Buttons */}
-        <div className="flex items-center space-x-4">
-          {/* LOGIN Button */}
-          <button
-            onMouseEnter={() => setHoveredButton('login')}
-            onMouseLeave={() => setHoveredButton(null)}
-            className={`px-5 py-1.5 border border-white rounded-full text-sm font-semibold transition-all duration-300 ${
-              hoveredButton === 'login'
-                ? 'bg-white text-black'
-                : hoveredButton === 'signup'
-                ? 'bg-black text-white'
-                : 'bg-white text-black'
-            }`}
-          >
-            LOGIN
-          </button>
-
-          {/* SIGN UP Button */}
-          <button
-            onMouseEnter={() => setHoveredButton('signup')}
-            onMouseLeave={() => setHoveredButton(null)}
-            className={`px-5 py-1.5 border border-white rounded-full text-sm font-semibold transition-all duration-300 ${
-              hoveredButton === 'signup' ? 'bg-white text-black' : 'bg-black text-white'
-            }`}
-          >
-            SIGN UP
+        {/* Hamburger Menu Button (Mobile) */}
+        <div className="md:hidden">
+          <button onClick={toggleMobileMenu}>
+            {mobileMenuOpen ? (
+              <HiOutlineX size={28} />
+            ) : (
+              <HiOutlineMenuAlt3 size={28} />
+            )}
           </button>
         </div>
       </div>
-    </nav>
-    </>
-  );
 
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden mt-4 px-4 space-y-4 bg-black text-white pb-6">
+          <button
+            onClick={() => closeMenuAndNavigate("/")}
+            className="block w-full text-left font-medium hover:text-blue-400"
+          >
+            HOME
+          </button>
+          <button
+            onClick={() => closeMenuAndNavigate("/our-studio")}
+            className="block w-full text-left font-medium hover:text-blue-400"
+          >
+            OUR STUDIOS
+          </button>
+          <button
+            onClick={() => closeMenuAndNavigate("/blog")}
+            className="block w-full text-left font-medium hover:text-blue-400"
+          >
+            BLOG
+          </button>
+
+          <hr className="border-gray-600 my-2" />
+
+          {!isLoggedIn ? (
+            <>
+              <button
+                onClick={() => closeMenuAndNavigate("/login")}
+                className="block w-full text-left font-medium hover:text-blue-400"
+              >
+                LOGIN
+              </button>
+              <button
+                onClick={() => closeMenuAndNavigate("/signup")}
+                className="block w-full text-left font-medium hover:text-blue-400"
+              >
+                SIGN UP
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => closeMenuAndNavigate("/dashboard")}
+                className="block w-full text-left font-medium hover:text-blue-400"
+              >
+                DASHBOARD
+              </button>
+              <button
+                onClick={logoutHandler}
+                className="block w-full text-left font-medium hover:text-red-500"
+              >
+                LOGOUT
+              </button>
+            </>
+          )}
+        </div>
+      )}
+    </nav>
+  );
 };
 
 export default Navbar;

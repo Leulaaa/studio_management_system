@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/ui/Navbar';
+import Navbar from '../components/ui/navbar';
 import Footer from '../components/ui/Footer';
 import BlogCard from '../components/ui/BlogCard';
 import BImg1 from '../assets/BImg1.png';
@@ -16,7 +16,7 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navbar />
+      <Navbar /><br /><br /><br />
 
       <main className="container mx-auto p-4 md:p-8">
         {/* Hero Section */}
@@ -46,7 +46,7 @@ const BlogPage = () => {
             excerpt="Discover the fundamental principles of studio lighting and how proper illumination can transform your creative projects. From key lighting techniques to advanced setups, learn how professionals create stunning visual narratives through strategic light placement."
             imageUrl={BImg2}
             size="full"
-            onReadMore={() => navigate('/photography-studio')}
+            
           />
         </section>
 
@@ -60,7 +60,7 @@ const BlogPage = () => {
               imageUrl={BImg3}
               layout="vertical"
               size="normal"
-              onReadMore={() => navigate('/art-creative-studio')}
+              
             />
             <BlogCard
               title="Photography Studio Setup"
@@ -69,7 +69,7 @@ const BlogPage = () => {
               imageUrl={BImg4}
               layout="vertical"
               size="normal"
-              onReadMore={() => navigate('/photography-studio')}
+              
             />
             <BlogCard
               title="Podcast Production Studio"
@@ -78,7 +78,7 @@ const BlogPage = () => {
               imageUrl={BImg5}
               layout="vertical"
               size="normal"
-              onReadMore={() => navigate('/podcast-studio')}
+              
             />
           </div>
         </section>
@@ -91,7 +91,7 @@ const BlogPage = () => {
             excerpt="A comprehensive guide to planning, shooting, and post-production for your debut short film. Learn from industry professionals about common pitfalls to avoid and essential techniques that will elevate your storytelling."
             imageUrl={BImg6}
             size="full"
-            onReadMore={() => navigate('/photography-studio')}
+        
           />
         </section>
 
@@ -108,12 +108,12 @@ const BlogPage = () => {
                 </p>
                 <div className="flex justify-between items-center text-xs font-semibold">
                   <span className="text-gray-600">May 8th 2023</span>
-                  <button
+                  {/* <button
                     className="text-blue-500 hover:text-blue-600 hover:underline transition-colors"
                     onClick={() => navigate('/music-studio')}
                   >
                     Read more
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <div className="md:w-1/2">

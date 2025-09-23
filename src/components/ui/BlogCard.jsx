@@ -29,9 +29,7 @@ const BlogCard = ({ title, date, excerpt, imageUrl, dark = false, layout = 'hori
           <p className={`text-sm mb-4 ${textColor} line-clamp-3`}>{excerpt}</p>
           <div className="flex justify-between items-center text-xs font-semibold">
             <span className={textColor}>{date}</span>
-            <a href="#" className="text-blue-500 hover:text-blue-600 hover:underline transition-colors">
-              Read more
-            </a>
+           
           </div>
         </div>
       </div>
@@ -45,9 +43,7 @@ const BlogCard = ({ title, date, excerpt, imageUrl, dark = false, layout = 'hori
         <p className={`text-sm mb-6 ${textColor} leading-relaxed`}>{excerpt}</p>
         <div className="flex justify-between items-center text-xs font-semibold">
           <span className={textColor}>{date}</span>
-          <a href="#" className="text-blue-500 hover:text-blue-600 hover:underline transition-colors">
-            Read more
-          </a>
+          
         </div>
       </div>
       <div className="md:w-1/2">

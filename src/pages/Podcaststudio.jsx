@@ -1,67 +1,186 @@
-// App.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import img1 from "../assets/Rectangle 2112 (3).png";
 import img2 from "../assets/Rectangle 2113 (3).png";
 import img3 from "../assets/Rectangle 2114 (2).png";
 import img4 from "../assets/Rectangle 2115 (2).png";
-import img5 from "../assets/Group 32.png";
-import img6 from "../assets/Download our app (1).png";
-import img7 from "../assets/Download our app.png";
-import Navbar from "../components/ui/navbar"; 
+
+import Navbar from "../components/ui/navbar";
 import Footer from "../components/ui/Footer";
+
 import musicImg from "../assets/Rectangle 2112 (1).png";
-import podcastImg from "../assets/Rectangle 2115 (1).png";
-import photographyStudioImg from "../assets/Rectangle 2112 (1).png";
-const photographyImages = [img1, img2, img3, img4];
+import podcastImg from "../assets/Rectangle 31.png";
+import photographyStudioImg from "../assets/Rectangle 2112 (2).png";
+
+const podcastImages = [img1, img2, img3, img4];
+
 const otherStudios = [
-  { name: "Art Studio", image: musicImg },
-  { name: "Music Studio", image: podcastImg },
-  { name: "Photography Studio", image: photographyStudioImg },
+  { name: "Art Studio", image: musicImg, path: "/artstudio" },
+  { name: "Photography Studio", image: podcastImg, path: "/photographystudio" },
+  { name: "Music Studio", image: photographyStudioImg, path: "/musicstudio" },
 ];
 
-
-
 export default function Podcaststudio() {
+  const [studios, setStudios] = useState([]);
+  const [equipments, setEquipments] = useState([]);
+  const [staffs, setStaffs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [activeTab, setActiveTab] = useState("equipments");
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
+
+  const navigate = useNavigate();
+
+  const renderList = () => {
+    return activeTab === "equipments" ? equipments : staffs;
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const studioRes = await axios.get("http://localhost:9000/api/studios");
+        const equipmentRes = await axios.get("http://localhost:9000/api/equipments");
+        const staffRes = await axios.get("http://localhost:9000/api/staffs");
+
+        const studioData = studioRes.data.data[2]; // Podcast Studio
+        const equipmentData = equipmentRes.data.data[2];
+        const staffData = staffRes.data.data[2];
+
+        setStudios([studioData]);
+        setEquipments([equipmentData.name]);
+        setStaffs([staffData.role_title]);
+      } catch (err) {
+        console.error("Error fetching podcast studio data:", err);
+        setError("Failed to load studio data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="bg-white">
-      <Navbar/>
+      <Navbar />
+      <br /><br /><br />
+
       <section className="max-w-6xl mx-auto p-6">
-        <h1 className="text-3xl font-bold mb-6">Podcast Studio</h1>
+        {loading && <p>Loading studios...</p>}
+        {error && <p className="text-red-500">{error}</p>}
+
+        {studios.length > 0 && (
+          <h1 className="text-3xl font-bold mb-6">{studios[0].name}</h1>
+        )}
+
         <div className="flex flex-col md:flex-row gap-6">
           <div className="flex-1">
             <img
-              src={photographyImages[0]}
-              alt="Photography Studio"
+              src={podcastImages[0]}
+              alt="Podcast Studio"
               className="rounded-lg shadow-lg"
             />
           </div>
+
           <div className="flex-1 flex flex-col justify-center gap-4">
+            <div className="flex gap-4 mb-4">
+              <button
+                className={`px-4 py-2 rounded ${
+                  activeTab === "equipments"
+                    ? "bg-black text-white"
+                    : "bg-gray-200 text-gray-800"
+                }`}
+                onClick={() => setActiveTab("equipments")}
+              >
+                Equipments
+              </button>
+              <button
+                className={`px-4 py-2 rounded ${
+                  activeTab === "staffs"
+                    ? "bg-black text-white"
+                    : "bg-gray-200 text-gray-800"
+                }`}
+                onClick={() => setActiveTab("staffs")}
+              >
+                Staffs
+              </button>
+            </div>
+
             <ul className="list-disc list-inside space-y-2 text-gray-700">
-              <li>Adjustable lighting rigs and studio flashes.</li>
-              <li>Variety of backdrops, props, and styling equipment.</li>
-              <li>Ideal for portraits, products, campaigns, and fashion shoots.</li>
-              <li>Assistance from in-house photographers and stylists if requested.</li>
+              {renderList().map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
             </ul>
-           
+
+            <div className="mt-6 bg-black text-white px-4 py-2 rounded-lg text-center font-semibold">
+              {studios.length > 0 && (
+                <h1 className="text-l">{studios[0].hourly_rate} birr/hr</h1>
+              )}
+            </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-          {photographyImages.slice(1).map((img, idx) => (
+          {podcastImages.slice(1).map((img, idx) => (
             <img
               key={idx}
               src={img}
-              alt={`Photography ${idx}`}
+              alt={`Podcast Studio ${idx}`}
               className="rounded-lg shadow-lg w-full h-60 object-cover"
             />
           ))}
         </div>
       </section>
-       <button className="mt-4 px-6 py-2 bg-black object-center ml-[500px] text-white rounded-lg hover:bg-gray-800 transition">
-              Schedule Session
-            </button>
 
-      {/* Other Studios */}
+      {/* ✅ Book Now with Login Check */}
+      <div className="flex justify-center">
+        <button
+          onClick={() => {
+            const token = localStorage.getItem("token");
+            if (token) {
+              navigate("/booking/Podcast Studio");
+            } else {
+              setShowLoginPrompt(true);
+            }
+          }}
+          className="mt-6 px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition"
+        >
+          Book Now
+        </button>
+      </div>
+
+      {/* ✅ Login Modal */}
+      {showLoginPrompt && (
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center space-y-4">
+            <h2 className="text-xl font-semibold text-gray-800">Please Sign In</h2>
+            <p className="text-gray-600">You need to be logged in to book a studio.</p>
+            <div className="flex justify-center gap-4 mt-4">
+              <button
+                onClick={() => navigate("/login")}
+                className="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition"
+              >
+                Sign In
+              </button>
+              <button
+                onClick={() => navigate("/signup")}
+                className="bg-gray-200 text-black px-4 py-2 rounded hover:bg-gray-300 transition"
+              >
+                Sign Up
+              </button>
+            </div>
+            <button
+              onClick={() => setShowLoginPrompt(false)}
+              className="text-sm text-blue-500 hover:underline mt-4"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
       <section className="mt-12 max-w-6xl mx-auto p-6">
         <h2 className="text-2xl font-bold mb-6">Other Studios</h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -69,6 +188,7 @@ export default function Podcaststudio() {
             <div
               key={idx}
               className="relative rounded-lg overflow-hidden cursor-pointer"
+              onClick={() => navigate(studio.path)}
             >
               <img
                 src={studio.image}
@@ -83,12 +203,10 @@ export default function Podcaststudio() {
             </div>
           ))}
         </div>
-      </section><br /><br />
-     
+      </section>
 
-{/* Footer */}
-<Footer/>
-
+      <br /><br />
+      <Footer />
     </div>
   );
 }

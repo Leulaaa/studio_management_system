@@ -1,77 +1,69 @@
-import './signup2.css'
-import { Link } from "react-router-dom"
-import img1 from './image/img1.jpg';
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-
-
-
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable"
-
+// Signup2.jsx
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import img1 from "./image/img1.jpg";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 export function Signup2() {
+  const [otp, setOtp] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle OTP verification logic here
+  };
+
   return (
-    <ResizablePanelGroup 
-      direction="horizontal"
-      className="mt-[80px] ml-[200px] min-h-[460px] max-w-md rounded-none  md:min-w-[950px] "
-    >
-      <ResizablePanel defaultSize={39} id="group">
-        
-          <img id='img' src={img1} alt=""/>
-          
-        
-      </ResizablePanel>
-      
-      <ResizablePanel defaultSize={75}>
-        <div id='' className='' >
-          <Card className="w-full max-w-sm rounded-none min-h-[400px] max-w-md rounded-none  md:min-w-[100px] " id='bgg'><br /><br /><br /><br />
-      <p id='otp'>we sent OTP using your phone number</p><br />
-      <CardContent>
-        <form id="form"> 
-          <div className="flex flex-col gap-2 border-none h-20">
-            
-             <div className="grid gap-3 border-none  h-12" >
-              
-              <Input className="border-none   absolute x-10 h-10 w-83"
-                id="otp"
-                type="number"
-                placeholder="Enter OTP"
-                required
-              />
-            </div>
-             
-           
-        
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex-col gap-2 ">
-       
-        <Button id='sii' className="w-[340px] x-100 text-white ">
-          Sign Up
-        </Button>
-        <h2 className="text-[13px] pb-11">Alredy have an account? <Link to="/login" 
-                className='text-blue-500'>
-                  Login
-                </Link></h2>
-      </CardFooter>
-    </Card>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+      <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-md overflow-hidden w-full max-w-[1100px]">
+        {/* Image panel */}
+        <div className="w-full md:w-1/2 h-60 md:h-auto">
+          <img
+            src={img1}
+            alt="OTP Illustration"
+            className="w-full h-full object-cover"
+          />
         </div>
-      </ResizablePanel>
-    </ResizablePanelGroup>
-  )
+
+        {/* Form panel */}
+        <div className="w-full md:w-1/2 flex items-center justify-center p-6 md:p-10">
+          <Card className="w-full max-w-md border-none shadow-none">
+            <CardHeader>
+              <h2 className="text-3xl font-semibold text-center">
+                Verify OTP
+              </h2>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Input
+                  name="otp"
+                  type="text"
+                  placeholder="Enter OTP"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  required
+                  className="border-none shadow-none bg-gray-100 focus:outline-none focus:ring-0"
+                />
+                <Button
+                  type="submit"
+                  className="w-full text-white bg-black hover:bg-gray-800"
+                >
+                  Confirm
+                </Button>
+              </form>
+            </CardContent>
+            <CardFooter className="text-center mt-4">
+              <p className="text-sm">
+                Already have an account?{" "}
+                <Link to="/login" className="text-blue-500 hover:underline">
+                  Login
+                </Link>
+              </p>
+            </CardFooter>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
 }

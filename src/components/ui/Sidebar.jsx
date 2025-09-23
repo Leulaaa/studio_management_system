@@ -1,71 +1,165 @@
-import React from 'react';
-import { 
-  Menu, 
-  Home, 
-  Building2, 
-  UserCheck, 
-  Users, 
-  BarChart3, 
-  Settings 
-} from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import ProfileAvatar from './ProfileAvatar';
+import FormField from './FormField';
+import PasswordField from './PasswordField';
+import Button2 from './button2';
+import axios from 'axios';
 
-const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
-  const menuItems = [
-    { icon: Home, label: 'Dashboard', active: true },
-    { icon: Building2, label: 'Studios', active: false },
-    { icon: UserCheck, label: 'Admin Management', active: false },
-    { icon: Users, label: 'Users', active: false },
-    { icon: BarChart3, label: 'Report & Analytics', active: false },
-    { icon: Settings, label: 'Settings', active: false },
-  ];
+const AccountSettings = () => {
+  const [profileData, setProfileData] = useState({
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+  });
+
+  const [passwordData, setPasswordData] = useState({
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+
+  // Load user data from localStorage
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser) {
+      setProfileData({
+        fullName: storedUser.full_name || '',
+        email: storedUser.email || '',
+        phoneNumber: storedUser.phone || ''
+      });
+    }
+  }, []);
+
+  // Handle input changes
+  const handleProfileChange = (field, value) => {
+    setProfileData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handlePasswordChange = (field, value) => {
+    setPasswordData(prev => ({ ...prev, [field]: value }));
+  };
+
+  // Handle profile update
+  const handleSaveChanges = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await axios.put(
+        'http://localhost:9000/api/profile',
+        {
+          full_name: profileData.fullName,
+          email: profileData.email,
+          phone: profileData.phoneNumber,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      // ✅ Update localStorage after successful save
+      localStorage.setItem('user', JSON.stringify(res.data));
+
+      alert('Profile updated successfully!');
+    } catch (error) {
+      console.error('Failed to update profile:', error);
+      alert('Failed to update profile.');
+    }
+  };
+
+  // Handle password update
+  const handleChangePassword = async () => {
+    if (passwordData.newPassword !== passwordData.confirmPassword) {
+      alert('New password and confirmation do not match.');
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem('token');
+      await axios.patch(
+        'http://localhost:9000/api/profile/password',
+        {
+          currentPassword: passwordData.currentPassword,
+          newPassword: passwordData.newPassword
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      alert('Password changed successfully!');
+      setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
+    } catch (error) {
+      console.error('Failed to change password:', error);
+      alert('Failed to change password.');
+    }
+  };
 
   return (
-    <div className={`bg-white h-screen shadow-lg transition-all duration-300 ${isCollapsed ? 'w-16' : 'w-64'}`}>
-      {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200">
-        {!isCollapsed && (
-          <h1 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Super Admin
-          </h1>
-        )}
-        <button 
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-        >
-          <Menu size={20} className="text-gray-600" />
-        </button>
+    <div className="max-w-4xl p-2 space-y-4 mx-auto">
+      <h1 className="text-2xl font-semibold text-gray-900">ACCOUNT SETTINGS</h1>
+
+      {/* Profile Section */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 w-full">
+        <h2 className="text-lg font-semibold text-gray-900 mb-6">Profile</h2>
+        <div className="flex items-start space-x-6 w-full">
+          <ProfileAvatar size="large" />
+          <div className="flex-1 space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                label="Full Name"
+                value={profileData.fullName}
+                onChange={(e) => handleProfileChange('fullName', e.target.value)}
+              />
+              <FormField
+                label="Email"
+                value={profileData.email}
+                onChange={(e) => handleProfileChange('email', e.target.value)}
+                type="email"
+              />
+              <FormField
+                label="Phone Number"
+                value={profileData.phoneNumber}
+                onChange={(e) => handleProfileChange('phoneNumber', e.target.value)}
+                type="tel"
+              />
+            </div>
+            <div className="flex justify-end">
+              <Button2 onClick={handleSaveChanges}>SAVE CHANGES</Button2>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Navigation Menu */}
-      <nav className="mt-4 px-3">
-        {menuItems.map((item, index) => {
-          const Icon = item.icon;
-          return (
-            <div
-              key={index}
-              className={`mb-1 rounded-lg transition-all duration-200 cursor-pointer ${
-                item.active 
-                  ? 'bg-blue-50 text-blue-600' 
-                  : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
-              }`}
-            >
-              <div className={`flex items-center p-3 ${isCollapsed ? 'justify-center' : ''}`}>
-                <Icon 
-                  size={20} 
-                  className="transition-colors duration-200"
-                />
-                {!isCollapsed && (
-                  <span className="ml-3 font-medium transition-colors duration-200">
-                    {item.label}
-                  </span>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </nav>
+      {/* Password Section */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 w-full">
+        <h2 className="text-lg font-semibold text-gray-900 mb-6">CHANGE PASSWORD</h2>
+        <div className="space-y-6">
+          <PasswordField
+            label="Current Password"
+            value={passwordData.currentPassword}
+            onChange={(e) => handlePasswordChange('currentPassword', e.target.value)}
+          />
+          <PasswordField
+            label="New Password"
+            value={passwordData.newPassword}
+            onChange={(e) => handlePasswordChange('newPassword', e.target.value)}
+            placeholder="8+ characters"
+          />
+          <PasswordField
+            label="Confirm Password"
+            value={passwordData.confirmPassword}
+            onChange={(e) => handlePasswordChange('confirmPassword', e.target.value)}
+          />
+          <div className="flex justify-end">
+            <Button2 onClick={handleChangePassword}>CHANGE PASSWORD</Button2>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default AccountSettings;
